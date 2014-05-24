@@ -1,0 +1,47 @@
+
+//- projector view
+
+.view
+  .section( ng-show='section' )
+
+    //- shows general slide content
+    .slide( ng-show='slide' )
+      .content {{ slide }}
+
+    //- displays the question being asked
+    .question( ng-show='question' )
+      .content
+        h3 {{ question.title }}
+
+        //- multiple choice
+        ul( ng-show='question.choices' )
+          li( ng-repeat='choice in question.choices' ) {{ choice }}
+
+        //- free form
+        textarea( ng-hide='question.choices' )
+
+    hr
+
+    //- navigation ( available from remote as well )
+    button( ng-click='next()' ) Next
+    button( ng-click='previous()' ) Previous
+
+
+
+  //- start building the grid
+  ul.grid( class='columns-{{ game.data.categories.length }}' )
+
+    //- show each category
+    li.column( ng-repeat='category in game.data.categories' )
+      ul( class='rows-{{ category.sections.length + 1 }}' )
+
+        //- the category name
+        li.block.title
+          h3 {{ category.title }}
+
+        //- and each currency section
+        li.block( ng-repeat='section in category.sections'
+                  ng-click='select( section )'
+                  ng-class='{ done: section.done }' )
+          h3 {{ section.value }}
+

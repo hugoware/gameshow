@@ -1,0 +1,9 @@
+title: CSS Jeopardy
+theme: /style.css
+categories:
+  - history
+  - selectors
+  - properties
+  - mobile
+  - frameworks
+  - tools

@@ -1,0 +1,65 @@
+
+// standard gradient
+@mixin gradient( $top, $bottom )
+  background: $bottom
+  background: -moz-linear-gradient(top, $top 0%, $bottom 100%)
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $top), color-stop(100%, $bottom))
+  background: -webkit-linear-gradient(top, $top 0%, $bottom 100%)
+  background: -o-linear-gradient(top, $top 0%, $bottom 100%)
+  background: -ms-linear-gradient(top, $top 0%, $bottom 100%)
+  background: linear-gradient(to bottom, $top 0%, $bottom 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$top', endColorstr='$bottom',GradientType=0 )
+
+
+// applies venfor prefixes to a style
+@mixin prefix( $name, $argument... )
+  -webkit-#{$name}: #{$argument}
+  -ms-#{$name}: #{$argument}
+  -moz-#{$name}: #{$argument}
+  -o-#{$name}: #{$argument}
+  #{$name}: #{$argument}
+
+
+// standard setup for a transition
+@mixin transition( $args... )
+  +prefix( transition, $args )
+
+// causes text to move off screen. used for
+// buttons with images
+@mixin hide-text
+  text-indent: -9999px
+  line-height: -9999px
+
+
+// generates keyframes for vendor prefixes
+@mixin keyframes( $name )
+  @-webkit-keyframes #{$name}
+    @content
+  @-moz-keyframes #{$name}
+    @content
+  @-ms-keyframes #{$name}
+    @content
+  @keyframes #{$name}
+    @content
+
+// performs an animation
+@mixin animate( $args... )
+  +prefix( animation, $args )
+
+
+// applies rules for a clearfix
+@mixin clearfix( $args... )
+  &
+    *zoom: 1
+
+  &:before, &:after
+    content: " "
+    display: table
+    clear: both
+
+@mixin fill-screen
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0

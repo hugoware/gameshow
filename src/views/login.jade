@@ -1,0 +1,49 @@
+
+//- handles getting a user connected
+
+ul.view( ng-switch='view.at' )
+  li {{ view }}
+
+  //- creating a new game
+  li( ng-switch-when='create' )
+
+    dl
+      dt Password
+      dl
+        input( type='password' ng-model='$parent.password' )
+
+      dt Game
+      dl
+        select( type='password' ng-model='$parent.type' )
+          option( value='css' ) CSS Jeopardy
+
+    button( ng-click='create()' ) Create
+
+
+  //- already part of a game
+  li( ng-switch-when='rejoin' )
+    h2 You're already logged in
+
+    button( ng-click='rejoin()' ) Rejoin
+    button( ng-click='cancel()' ) Cancel
+
+
+  //- default login form
+  li( ng-switch-default )
+
+    dl
+      dt Name
+      dl
+        input( type='text' ng-model='$parent.name' placeholder='Fred Smith' )
+
+      dt Session ID
+      dl
+        input( type='text' ng-model='$parent.session' placeholder='999-999-999' )
+
+      dt Email ( for Gravatar )
+      dl
+        input( type='text' ng-model='$parent.email' placeholder='Optional' )
+
+    button( ng-click='join()' ) Join
+
+    a( ng-click='view("create")' ) Create game

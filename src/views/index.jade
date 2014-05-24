@@ -1,0 +1,19 @@
+doctype html
+html#ng-app( ng-app='gameshow' )
+  head
+
+    //- styles
+    link( rel='stylesheet' type='text/css' href='/ui/style.css' )
+
+    //- server data
+    script( type='text/javascript' ).
+      window.CLIENT_ID = '#{ id }';
+
+
+  //- main view
+  body( ng-controller='AppController' ng-class='{ loading: !state.ready }' )
+    #view( ng-view )
+
+    //- scripts
+    script( src='/socket.io/socket.io.js' type='text/javascript' )
+    script( src='/app.js' type='text/javascript' )

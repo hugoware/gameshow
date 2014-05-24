@@ -1,0 +1,27 @@
+@import _reset
+@import _util
+
+@import _config
+
+@import _layers
+@import _clear
+@import _animations
+
+.grid
+
+  // column sizes
+  &.columns-5 .column
+    width: 20%
+  &.columns-6 .column
+    width: 16.665%
+
+  .column
+    float: left
+
+
+  .block
+    height: 100px
+    background-color: #f00
+
+    &.done
+      opacity: .2

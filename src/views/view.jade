@@ -1,0 +1,26 @@
+
+//- participant control
+#user
+  ul( ng-class='{ location: location, question: question }' )
+
+    //- location information
+    li.location
+      .category {{ location.category }}
+      .section {{ location.section }}
+
+    //- the question being asked
+    li.question
+      .title( markdown ) {{ question.title }}
+
+      .hint( ng-show='question.hint' markdown ) {{ hint }}
+
+      //- show multiple choice answers
+      .choices( ng-show='question.choices' )
+        dl( ng-repeat='item in question.choices' ng-click='answer( $index )' )
+          dt
+          dd {{ item }}
+
+      //- otherwise, it's a free form
+      .freeform( ng-hide='question.choices' )
+        textarea( ng-model='entry' )
+        button( ng-click='answer( entry )' ) Answer
