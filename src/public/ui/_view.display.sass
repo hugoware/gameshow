@@ -1,0 +1,136 @@
+
+
+// the main display
+#display
+
+  // admin controls ( from the display )
+  .controller
+    z-index: $layer-controls
+    position: fixed
+    bottom: 0
+    left: 0
+    right: 0
+    padding : 15px
+    opacity: 0
+
+    +prefix( text-shadow, 0 1px 2px #000 )
+    background : rgba( 0,0,0, .7 )
+
+    +transition( opacity, .3s .5s )
+
+    // fade in the bottom bar
+    &:hover
+      opacity: 1
+      +transition( opacity, .3s )
+
+    // the game session ID
+    .id
+      color : #fff
+      float : left
+      font-family: 'code', monospace
+
+    // button controls
+    .controls
+      float: right
+
+      // all elements
+      div
+        display: inline
+        margin-left: 15px
+        cursor: pointer
+
+      // controls
+      .close, .previous
+        opacity: .3
+        color : #ccc
+        +transition( opacity, .3s )
+
+        &:hover
+          opacity: 1
+          +transition( opacity, .3s )
+
+      .close
+        margin-right: 25px
+
+      .next
+        border: 1px solid #eee
+        padding: 3px 10px
+
+        font-size: 14px
+        color: #333
+        text-shadow: 0 -1px 2px rgba( 255,255,255, .7 )
+
+        +gradient( #eee, #bbb )
+        +prefix( border-radius, 3px )
+        +prefix( box-shadow, 0 1px 2px rgba( 0,0,0, .7 ))
+
+
+  // overlays for a section
+  .slide, .question, .section
+    +fullscreen
+
+  // handles showing slide views
+  .section
+    z-index: $layer-section
+    +fullscreen
+
+  // section content
+  .slide, .question
+    background: #fff
+
+    // the material itself
+    .content
+      margin : 8% 12% 0 12%
+
+
+  .answered
+    z-index: $layer-answered
+    position: absolute
+    right: 3%
+    bottom: 5%
+    padding : 10px 30px 10px 10px
+
+    +prefix( box-sizing, border-box )
+    border : 2px solid #fff
+    +gradient( #fff, #eee )
+
+    +prefix( box-shadow, 0 4px 15px rgba(0,0,0,.4) )
+    +prefix( border-radius, 7px )
+
+    dt, dd
+      float: left
+      text-shadow : 0 1px 1px #fff
+
+    dt
+      padding-right: 10px
+
+    img
+      height: 50px
+      width: 50px
+      +prefix( border-radius, 5px )
+
+    h3
+      font-size: 22px
+      padding: 2px 0 3px 0
+
+    p
+      color : #bbb
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

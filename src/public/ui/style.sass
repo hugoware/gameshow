@@ -1,27 +1,26 @@
-@import _reset
+
 @import _util
-
 @import _config
-
 @import _layers
+@import _fonts
+
+// resets and fixes
+@import _reset
 @import _clear
+
+// animations ( if any )
 @import _animations
 
-.grid
+// base
+@import _site
 
-  // column sizes
-  &.columns-5 .column
-    width: 20%
-  &.columns-6 .column
-    width: 16.665%
+// components
+@import _board
 
-  .column
-    float: left
+// views
+@import _view.login
+@import _view.display
+@import _view.user
 
 
-  .block
-    height: 100px
-    background-color: #f00
 
-    &.done
-      opacity: .2

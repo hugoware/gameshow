@@ -15,11 +15,11 @@ angular.module 'gameshow'
 
         # they're allowed in
         if result.success
-          App.valid = true
           $location.path '/view'
 
-        # show errors
-        # else
+        # show errors if needed
+        else if result.error
+          $scope.error = result.error
 
 
     # try and make a new game
@@ -31,8 +31,9 @@ angular.module 'gameshow'
         if result.success
           $location.path '/display'
 
-        # show errors
-        # else
+        # show errors if needed
+        else if result.error
+          $scope.error = result.error
 
 
     # return to the game
@@ -48,12 +49,10 @@ angular.module 'gameshow'
 
 
     # watch for user account errors
-    Socket.on 'user:invalid', ( result ) ->
-      $scope.error = result.error
+    Socket.on 'user:invalid', ( result ) -> $scope.error = result.error
 
     # update user account
-    Socket.on 'user:set', ( result ) ->
-      App.user = result
+    Socket.on 'user:set', ( result ) -> App.user = result
 
 
 
@@ -65,6 +64,7 @@ angular.module 'gameshow'
 
     # check if rejoining is an option
     if App.rejoin
+      $location.path if App.rejoin.leader then '/display' else '/view'
       $scope.rejoin = App.rejoin
       $scope.view 'rejoin'
 
@@ -72,6 +72,8 @@ angular.module 'gameshow'
 
     # helper stuff
     $scope.name = $scope.name or (0|( Math.random() * 100000 )).toString( 32 )
-    $scope.session = '888-666-777';
-    $scope.password = 'raiden';
-    $scope.type = 'css';
+    $scope.session = '888-666-777'
+    $scope.password = 'raiden'
+    $scope.type = 'css'
+
+

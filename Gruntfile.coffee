@@ -94,6 +94,7 @@ module.exports = ( grunt ) ->
           # initialize the app
           '<%= scripts %>/init.js'
           '<%= scripts %>/controllers/*.js'
+          '<%= scripts %>/filters/*.js'
           '<%= scripts %>/components/*.js'
           '<%= scripts %>/directives/*.js'
           '<%= scripts %>/services/*.js'

@@ -37,4 +37,16 @@ angular.module 'gameshow'
 
     # make sure they can be here
     Game.status ( result ) ->
+
+      # if there isn't a result, they shouldn't be
+      # in this section set
+      unless result?
+        return $location.path '/'
+
+      # populate any game data
+      $scope.location = result.location
+      $scope.question = result.question
+      $scope.answered = result.answered
+
+      # allow the view to show
       _ready()

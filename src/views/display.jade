@@ -1,52 +1,58 @@
 
 //- projector view
 
-.view
+#display.view
+
+  //- navigation ( available from remote as well )
+  .controller
+    .id {{ game.data.id | game_id }}
+    .controls( ng-show='section' )
+      .close( ng-click='close()' ) Close
+      .previous( ng-click='previous()' ) Previous
+      .next( ng-click='next()' ) Next
+
+
+  //- the area being explored
   .section( ng-show='section' )
 
     //- show the person who got it right
-    .answered( ng-show='answered' )
-      h3 {{ answered.name }}
-      img( ng-src='http://www.gravatar.com/avatar/{{ answered.avatar }}.jpg?size=100' )
+    dl.answered( ng-show='answered' )
+      dt
+        img( ng-src='http://www.gravatar.com/avatar/{{ answered.avatar }}.jpg?size=100' )
+      dd
+        h3 {{ answered.name }}
+        p First correct answer
 
     //- shows general slide content
     .slide( ng-show='slide' )
-      .content {{ slide }}
+      .content( markdown='slide' )
 
     //- displays the question being asked
     .question( ng-show='question' )
       .content
         h3 {{ question.title }}
 
+        .hint( ng-show='question.hint' markdown='question.hint' )
+
         //- multiple choice
         ul( ng-show='question.choices' )
           li( ng-repeat='choice in question.choices' ) {{ choice }}
 
-        //- free form
-        textarea( ng-hide='question.choices' )
 
-    hr
-
-    //- navigation ( available from remote as well )
-    button( ng-click='next()' ) Next
-    button( ng-click='previous()' ) Previous
-
-
-
-  //- start building the grid
-  ul.grid( class='columns-{{ game.data.categories.length }}' )
+  //- game board ( titles and tiers )
+  ul.board( class='columns-{{ game.data.categories.length }}' )
 
     //- show each category
     li.column( ng-repeat='category in game.data.categories' )
-      ul( class='rows-{{ category.sections.length + 1 }}' )
+      ul.rows( class='rows-{{ category.sections.length }}' )
 
         //- the category name
         li.block.title
-          h3 {{ category.title }}
+          .label {{ category.title }}
 
         //- and each currency section
-        li.block( ng-repeat='section in category.sections'
+        li.block.tier( ng-repeat='section in category.sections'
                   ng-click='select( section )'
                   ng-class='{ done: section.done }' )
-          h3 {{ section.value }}
+          .label {{ section.value }}
 

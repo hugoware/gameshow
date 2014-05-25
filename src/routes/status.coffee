@@ -10,11 +10,8 @@ module.exports = ( request, response ) ->
   session = $sessions.get request.sessionID
   game = $game.get session?.game_id
 
-  # make sure this person can make changes
-  in_game = game?
-
-  # make sure this user can see if
-  unless in_game
+  # check for a game
+  unless game?
     return response.end()
 
   # send back the game data

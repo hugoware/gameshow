@@ -2,7 +2,7 @@
 # main application controller
 
 angular.module 'gameshow'
-  .controller 'AppController', ( $scope, $location, App, Config, Socket ) ->
+  .controller 'AppController', ( $scope, $location, $timeout, App, Config, Socket ) ->
 
     # share data
     $scope.app = App

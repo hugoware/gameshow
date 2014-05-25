@@ -47,8 +47,8 @@ $io.instance.sockets.on 'connection', ( socket ) ->
 
 
   # clears the current section
-  socket.on 'navigate:clear', () ->
-    $game.set_clear socket
+  socket.on 'navigate:clear', ( data ) ->
+    $game.set_clear socket, data
 
 
   # tries to answer the current question

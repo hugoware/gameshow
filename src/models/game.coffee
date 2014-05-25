@@ -29,8 +29,8 @@ $.start = ( type ) =>
     type: type
     data: $util.clone $.types[ type ]
 
-    # general game state
-    state: { }
+  # share the ID
+  game.data.id = game.id
 
   # the new game
   game
@@ -70,20 +70,24 @@ $.create = ( socket, params ) ->
 
 # gets client status info
 $.status = ( game ) ->
-  status = _get_location game
-  status.question = _get_question game if status
-  status
+  question = _get_question game
+  location = _get_location game
+
+  # return the status info
+  location: location
+  question: question
+  answered: question?.answered
 
 
 
 # finds a game instance
-$.set_clear = ( socket ) ->
+$.set_clear = ( socket, params ) ->
   game = _get socket, leader: true
   return unless game
 
   # clear all
-  _clear_question game
-  _clear_section game
+  _clear_question game, params
+  _clear_section game, params
 
   # clear out all data
   socket.broadcast.in game.id
@@ -123,7 +127,7 @@ $.set_section = ( socket, params ) ->
 
   # assign the new section
   game.category = game.data[ params.category ]
-  game.section = category?[ params.section ]
+  game.section = game.category?[ params.section ]
 
   # notify clients if the section changes
   if game.section and game.category
@@ -221,13 +225,13 @@ $.answer = ( socket, data ) ->
   if correct? and not game.question.answered?
 
     # mark as answered
-    game.question.answered = true
+    game.question.answered =
+      name: socket.session.user?.name or game.default_name or 'Unknown'
+      avatar: socket.session.user?.avatar
 
     # notify the rest of the players
     socket.broadcast.in game.id
-      .emit 'game:answered',
-        name: socket.session.user?.name or game.default_name or 'Unknown'
-        avatar: socket.session.user?.avatar
+      .emit 'game:answered', game.question.answered
 
 
 
@@ -251,16 +255,16 @@ _get = ( socket, options ) ->
 
 
 # clears the current question
-_clear_question = ( game ) ->
+_clear_question = ( game, params ) ->
   if game.question
-    game.question.done = true
+    game.question.done = true unless params?.cancel
     delete game.question
 
 
 # clears the current section
-_clear_section = ( game ) ->
+_clear_section = ( game, params ) ->
   if game.section
-    game.section.done = true
+    game.section.done = true unless params?.cancel
     delete game.section
 
 
@@ -314,34 +318,34 @@ _to_id_alias = ( id ) -> ( id || '' ).toString().replace /[^0-9]/g, ''
 # handles setting up a regex to check answers
 _assign_matching_expression = ( question ) ->
 
-    # create an expression to test values
-    if question.choices
-      index = ( question.answer.toLowerCase().charCodeAt 0 ) - 97
-      new RegExp "^#{ index }$"
+  # create an expression to test values
+  if question.choices
+    index = ( question.answer.toLowerCase().charCodeAt 0 ) - 97
+    new RegExp "^#{ index }$"
 
-    # otherwise, it's a matching expressions
-    else
+  # otherwise, it's a matching expressions
+  else
 
-      # set options ( only check if explictly turned off)
-      options = ''
-      options += 'i' unless question.ignore_case is false
-      options += 'g' unless question.global is false
+    # set options ( only check if explictly turned off)
+    options = ''
+    options += 'i' unless question.ignore_case is false
+    options += 'g' unless question.global is false
 
-      # create the expression
-      new RegExp question.answer, options
+    # create the expression
+    new RegExp question.answer, options
 
 
 
 # gets minimal question data
 _get_question = ( game ) ->
-  if game.question
+  if game?.question
     id: game.question.id
     title: game.question.title
     choices: game.question.choices
 
 
-
+# gets the current game location
 _get_location = ( game ) ->
-  if game.category and game.section
-    category: game.category.title
-    section: game.section.title
+  if game.category? and game.section?
+    category: game.category.title if game.category
+    section: game.section.title if game.section

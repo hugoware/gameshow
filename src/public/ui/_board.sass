@@ -1,0 +1,75 @@
+.board
+  +fullscreen
+  overflow: hidden
+
+  // column sizes
+  &.columns-5 .column
+    width: 20%
+  &.columns-6 .column
+    width: 16.665%
+
+  .column
+    float: left
+    height: 100%
+
+  .rows
+    height: 100%
+
+  .rows-5
+    .block
+      height: 18%
+
+    .title
+      height: 10%
+
+  // standard block
+  .block
+    color: #fff
+    font-family: 'heading', sans-serif
+    +prefix( text-shadow, 0 1px 3px rgba( 0,0,0, .7 ))
+
+    // the money tier block
+    &.tier
+      +gradient( #222, #444 )
+      +prefix( box-sizing, border-box )
+      +prefix( box-shadow, inset 0 10px 70px rgba( 0,0,0,.5 ))
+      border: 1px solid #555
+      cursor: pointer
+
+      // change text size for different sizes
+      .label
+        font-size: 38px
+        @media (min-width:900px)
+          font-size: 44px
+        @media (min-width:700px) and (max-width:899px)
+          font-size: 38px
+        @media (min-width:700px) and (max-width:900px)
+          font-size: 28px
+        @media (max-width:699px)
+          font-size: 18px
+
+    &.done .label
+      color : #111
+      +prefix( text-shadow, 0 -1px 2px rgba( 255,255,255, .3 ))
+
+    // the title block
+    &.title
+      +gradient( #0C6A87, #0C3F4F )
+      border-bottom: 1px solid rgba( 255,255,255, .3 )
+
+      // change text size for different sizes
+      .label
+        font-size: 32px
+        @media (min-width:700px) and (max-width:900px)
+          font-size: 22px
+        @media (max-width:699px)
+          font-size: 14px
+
+
+    // per block label text
+    .label
+      // center the text
+      top: 50%
+      +prefix( transform, translateY( -50% ))
+      position: relative
+      text-align: center

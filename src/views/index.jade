@@ -3,7 +3,7 @@ html#ng-app( ng-app='gameshow' )
   head
 
     //- styles
-    link( rel='stylesheet' type='text/css' href='/ui/style.css' )
+    link( id="ui" rel='stylesheet' type='text/css' href='/ui/style.css' )
 
     //- server data
     script( type='text/javascript' ).
@@ -17,3 +17,14 @@ html#ng-app( ng-app='gameshow' )
     //- scripts
     script( src='/socket.io/socket.io.js' type='text/javascript' )
     script( src='/app.js' type='text/javascript' )
+
+
+    script( type='text/javascript' ).
+      function reset() {
+        $('link').remove();
+        $('<link/>').attr({
+          type: 'text/css',
+          rel: 'stylesheet',
+          href:'/ui/style.css?r=' + (new Date()).getTime()
+          }).appendTo( document.body );
+      }

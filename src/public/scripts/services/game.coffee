@@ -17,6 +17,7 @@ angular.module 'gameshow'
     # easier to use on the client side
     _format = ( data ) ->
       return unless data
+      console.log data
 
       # link each category
       for key, index in data.categories
@@ -64,27 +65,17 @@ angular.module 'gameshow'
           callback?( data )
 
 
-    # gets the default status for a view
+
+    # gets the default status for a game view
     @.status = ( callback ) ->
-      callback
-        success: true
+      $http.get '/status'
+
+        # errors just fail
+        .error => callback?()
+
+        # success loads data for display
+        .success ( data ) =>
+          callback?( data )
 
 
-
-
-
-    # # marks an item as done
-    # @.done = ( type, index, item ) ->
-    #   item.done = true
-
-    #   # mark it finished on the server
-    #   Socket.emit 'game:done',
-    #     index: index
-    #     type: [ null, 'question', 'section' ][ type ]
-
-
-
-
-
-
-    @
+    @ # return the instance

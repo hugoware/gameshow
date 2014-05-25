@@ -2,10 +2,18 @@
 # handles the projector view
 
 angular.module 'gameshow'
-  .controller 'DisplayController', ( $scope, $location, App, Game, Socket ) ->
+  .controller 'DisplayController', ( $scope, $location, $timeout, App, Game, Socket ) ->
     $scope.game = Game
     $scope.app = App
 
+    $scope.slide = 'Tools'
+    $scope.category = 'Tools'
+    $scope.section = 'Using Grunt'
+
+    $timeout( (->
+      console.log('here?')
+      $scope.answered = name: 'Marcus'
+      ), 1000 )
 
     # navigate to the next slide
     $scope.next = ->
@@ -17,6 +25,11 @@ angular.module 'gameshow'
     $scope.previous = ->
       $scope.index = Math.max 0, $scope.index - 1
       _update_section()
+
+    # leaves a section
+    $scope.close = ->
+      Socket.emit 'navigate:clear', cancel: true
+      delete $scope.section
 
 
     # picks a section
@@ -61,8 +74,8 @@ angular.module 'gameshow'
 
       # if this finished the $scope.section
       if finished
-        Socket.emit 'navigate:clear'
         $scope.section.done = true
+        Socket.emit 'navigate:clear'
         delete $scope.section
 
       # check if a slide

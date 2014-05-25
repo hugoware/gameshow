@@ -16,7 +16,7 @@
     li.question
       .title( markdown ) {{ question.title }}
 
-      .hint( ng-show='question.hint' markdown ) {{ hint }}
+      .hint( ng-show='question.hint' markdown ) {{ question.hint }}
 
       //- show multiple choice answers
       .choices( ng-show='question.choices' )
