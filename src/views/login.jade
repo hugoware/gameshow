@@ -22,10 +22,10 @@ ul.view( ng-switch='view.at' )
 
   //- already part of a game
   li( ng-switch-when='rejoin' )
-    h2 You're already logged in
+    h2 You're already logged in to {{ rejoin.title }}
 
-    button( ng-click='rejoin()' ) Rejoin
-    button( ng-click='cancel()' ) Cancel
+    button( ng-click='resume()' ) Rejoin
+    button( ng-click='leave()' ) Leave
 
 
   //- default login form
@@ -36,13 +36,13 @@ ul.view( ng-switch='view.at' )
       dl
         input( type='text' ng-model='$parent.name' placeholder='Fred Smith' )
 
+      dt Email ( for Avatar )
+      dl
+        input( type='text' ng-model='$parent.email' placeholder='Optional' )
+
       dt Session ID
       dl
         input( type='text' ng-model='$parent.session' placeholder='999-999-999' )
-
-      dt Email ( for Gravatar )
-      dl
-        input( type='text' ng-model='$parent.email' placeholder='Optional' )
 
     button( ng-click='join()' ) Join
 

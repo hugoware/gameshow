@@ -1,5 +1,7 @@
-# requires
+
 $config = require './config'
+require './extend'
+
 $express = require 'express'
 $http = require 'http'
 $path = require 'path'
@@ -54,6 +56,7 @@ $app.use $express.static( $setup.folder.public )
 $app.all '/', require './routes/index'
 $app.all '/views?/:id', require './routes/view'
 $app.all '/data', require './routes/data'
+$app.all '/status', require './routes/status'
 $app.all '/dump', require './routes/dump'
 
 

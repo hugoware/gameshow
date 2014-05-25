@@ -4,6 +4,11 @@
 .view
   .section( ng-show='section' )
 
+    //- show the person who got it right
+    .answered( ng-show='answered' )
+      h3 {{ answered.name }}
+      img( ng-src='http://www.gravatar.com/avatar/{{ answered.avatar }}.jpg?size=100' )
+
     //- shows general slide content
     .slide( ng-show='slide' )
       .content {{ slide }}

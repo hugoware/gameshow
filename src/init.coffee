@@ -7,24 +7,10 @@ $io = require 'socket.io'
 
 
 
-# utility functions
-$util.hash = ( str ) ->
-  hash = 0
-  return hash if str.length is 0
-
-  for letter, i in str
-    chr   = str.charCodeAt i;
-    hash  = ((hash << 5) - hash) + chr
-    hash |= 0;
-
-  hash
-
-
-
-
 
 # load each game available game
 $game.load type for type in $config.types
+
 
 # link up socket requests
 $io.instance.sockets.on 'connection', ( socket ) ->
@@ -67,6 +53,7 @@ $io.instance.sockets.on 'connection', ( socket ) ->
 
   # tries to answer the current question
   socket.on 'game:answer', ( data ) ->
+    console.log 'answer'
     $game.answer socket, data
 
 

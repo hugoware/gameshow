@@ -2,17 +2,18 @@
 # main application controller
 
 angular.module 'gameshow'
-  .controller 'AppController', ( $scope, App, Game, Config, Socket ) ->
+  .controller 'AppController', ( $scope, $location, App, Config, Socket ) ->
 
     # share data
-    $scope.game = Game
     $scope.app = App
-    $scope.socket = Socket
-
 
     # handles a connected user
     _connected = ( result ) ->
-      console.log result
+      App.user = result.user
+      App.rejoin = result.rejoin
+
+      # go to the login page
+      $location.path '/login'
 
 
     # connect this client

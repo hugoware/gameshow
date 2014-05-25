@@ -39,4 +39,4 @@ grid:
 
     -
       title: Enter a selector for `li` in `ul` elements
-      answer: /ul > li/
+      answer: ul > li

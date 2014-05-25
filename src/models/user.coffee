@@ -1,6 +1,8 @@
 $ = module.exports
+$util = require 'util'
 $express = require 'express'
 $sessions = require '../sessions'
+$game = require '../models/game'
 
 
 # links a user session to a socket
@@ -16,8 +18,18 @@ $.connect = ( socket, id ) ->
   result = success: socket.valid
   result.error = 'invalid_session' unless socket.valid
 
+  # restore user information if possible
+  result.user = session.user if session?.user
+
+  # also check if already in a game
+  game = $game.get session?.game_id
+  if game
+    result.rejoin=
+      title: game.data.title
+      leader: game.leader is session.id
+
   # without a session, report back an error
-  socket.emit 'connect:result', result
+  socket.emit 'app:connect:result', result
 
   # save this data
   if session
@@ -43,21 +55,26 @@ $.disconnect = ( socket ) ->
 
 
 # adds a user to the system
-$.set = ( socket, name, email ) ->
+$.set = ( socket, data ) ->
   return unless socket.session?
 
-  # validate the info first
-  errors = [ ]
-  # no name
+  # format data
+  name = ( data.name or '' ).toString().trim()
+  email = ( data.email or '' ).toString().toLowerCase().trim()
 
-  # if this has errors
-  if errors.length > 0
-    return socket.emit 'user:invalid', errors: errors
+  # must have a name
+  unless name.length > 0
+    return socket.emit 'user:invalid', error: 'name_required'
+
+  # make sure the email isn't used
+  if email.length > 0 and _email_in_use email, socket.session.id
+    return socket.emit 'user:invalid', error: 'duplicate_email'
 
   # create the user
   socket.session.user =
-    name: name
-    email: _gravatar email
+    name: data.name
+    email: email
+    avatar: $util.gravatar email or socket.session.id
 
   # set the new user info
   socket.emit 'user:set', socket.session.user
@@ -80,14 +97,13 @@ $.get = ( client_id ) ->
   $users[ client_id ]
 
 
+# checks if any other session is using this email
+_email_in_use = ( email, except_session_id ) ->
+  for id, session of $sessions.all()
+    if id isnt except_session_id and email is session.user?.email
+      return true
 
-# generate the gravatar url
-_gravatar = ( email ) ->
 
-  # don't bother without an email
-  return unless email
 
-  # TODO: gravatar logic
-  email
 
 

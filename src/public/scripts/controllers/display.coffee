@@ -55,6 +55,7 @@ angular.module 'gameshow'
       in_questions = index.question < $scope.section.questions.length
 
       # clear existing
+      delete $scope.answered
       delete $scope.slide
       delete $scope.question
 
@@ -75,7 +76,8 @@ angular.module 'gameshow'
 
 
     # displays a successful answer
-    _show_answer = ( data ) ->
+    _update_answer = ( data ) ->
+      $scope.answered = data
 
 
 
@@ -85,7 +87,7 @@ angular.module 'gameshow'
     Socket.on 'navigate:select', ( data ) -> $scope.select Game.data[ data.category ]?[ data.section ]
 
     # handle game state changes
-    Socket.on 'game:answer', _show_answer
+    Socket.on 'game:answered', _update_answer
 
 
     # load and make sure data is found

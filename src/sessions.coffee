@@ -7,6 +7,11 @@ $sessions = { }
 # verify a session is active
 $.exists = ( id ) -> $express.setup.session.store.sessions[ id ]
 
+
+# get all sessions
+$.all = () -> $sessions
+
+
 # gets session data
 $.get = ( id ) ->
   exists = $.exists id

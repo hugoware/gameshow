@@ -64,26 +64,23 @@ angular.module 'gameshow'
           callback?( data )
 
 
-    # tries to log into the game
-    @.join = ( name, email, id, callback ) ->
-      Socket.emit 'game:join', name: name, email: email, id: id
-      Socket.once 'game:join:result', callback
+    # gets the default status for a view
+    @.status = ( callback ) ->
+      callback
+        success: true
 
 
-    # makes a game ( and shows this as the presenter )
-    @.create = ( password, type, callback ) ->
-      Socket.emit 'game:create', password: password, type: type
-      Socket.once 'game:create:result', callback
 
 
-    # marks an item as done
-    @.done = ( type, index, item ) ->
-      item.done = true
 
-      # mark it finished on the server
-      Socket.emit 'game:done',
-        index: index
-        type: [ null, 'question', 'section' ][ type ]
+    # # marks an item as done
+    # @.done = ( type, index, item ) ->
+    #   item.done = true
+
+    #   # mark it finished on the server
+    #   Socket.emit 'game:done',
+    #     index: index
+    #     type: [ null, 'question', 'section' ][ type ]
 
 
 

@@ -3,6 +3,10 @@
 #user
   ul( ng-class='{ location: location, question: question }' )
 
+    li.answered( ng-show='answered' )
+      h3 {{ answered.name }}
+      img( ng-src='http://www.gravatar.com/avatar/{{ answered.avatar }}.jpg?size=100' )
+
     //- location information
     li.location
       .category {{ location.category }}
