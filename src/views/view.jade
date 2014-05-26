@@ -1,30 +1,48 @@
 
 //- participant control
-#user
-  ul( ng-class='{ location: location, question: question }' )
+#user.view( ng-class='{ location: location, question: question, focused: focused }' )
 
-    li.answered( ng-show='answered' )
-      h3 {{ answered.name }}
-      img( ng-src='http://www.gravatar.com/avatar/{{ answered.avatar }}.jpg?size=100' )
+  //- loading gif while waiting
+  .waiting( ng-hide='location' ) Waiting for round to start
 
-    //- location information
-    li.location
+  //- location information
+  div( ng-hide='question' )
+    .location( ng-show='location' )
       .category {{ location.category }}
       .section {{ location.section }}
 
-    //- the question being asked
-    li.question
-      .title( markdown ) {{ question.title }}
 
-      .hint( ng-show='question.hint' markdown ) {{ question.hint }}
+  //- the question being asked
+  .question( ng-show='question' )
+    .title( markdown='question.title' )
+    .hint( ng-show='question.hint' markdown='question.hint' )
 
-      //- show multiple choice answers
+    //- displaying a user answer
+    .result( ng-show='result' ng-class='{ correct: result.success, wrong: !result.success }' )
+      div( ng-show='result.success' )
+        strong Correct!
+        strong  Way to go!
+
+      div( ng-hide='result.success' )
+        strong Oops!
+        span  That's not the answer
+
+    //- show multiple choice answers
+    .selection( ng-hide='result' )
       .choices( ng-show='question.choices' )
         dl( ng-repeat='item in question.choices' ng-click='answer( $index )' )
-          dt
+          dt {{ $index | option_letter }}
           dd {{ item }}
 
       //- otherwise, it's a free form
       .freeform( ng-hide='question.choices' )
-        textarea( ng-model='entry' )
-        button( ng-click='answer( entry )' ) Answer
+        .wrapper
+          textarea( ng-model='entry' ng-focus='focused=true' ng-blur='focused=false' )
+        .submit( ng-click='answer( entry )' ) Submit Answer
+
+
+  //- displays if someone has answered
+  .answered( ng-show='answered' )
+    img( ng-src='http://www.gravatar.com/avatar/{{ answered.avatar }}.jpg?size=100' )
+    h3 {{ answered.name }}
+    .badge

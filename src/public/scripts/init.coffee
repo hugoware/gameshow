@@ -24,7 +24,6 @@ angular.module 'gameshow', [
         scope.$apply action
 
 
-
   # setup the app
   .config ( $routeProvider ) ->
 
@@ -37,8 +36,12 @@ angular.module 'gameshow', [
      .when '/', { templateUrl: '/views/home', controller: 'HomeController' }
      .otherwise { templateUrl: '/views/missing', controller: 'MissingController' }
 
+
   # starting the app
   .run ( $location ) ->
+
+    # add fast click support
+    FastClick.bind document.body
 
     # go to loading first
     $location.path '/'

@@ -1,0 +1,200 @@
+#user
+  &.view
+    padding-bottom: 130px
+
+  // showing the answer result
+  .result
+    text-align: center
+    padding: 20px 15px
+
+    margin-top: 25px
+
+    border: 1px solid
+    +prefix( border-radius, 7px )
+    +prefix( text-shadow, 0 1px 2px #fff )
+    +prefix( box-shadow, inset 0 0 0 1px rgba( 255,255,255, .3 ))
+
+    &.correct
+      +gradient( #d8f9c0, #b4f785 )
+      color: #3b5b24
+      border-color: #3b5b24
+
+    &.wrong
+      $_wrong_color: #ff8e7a
+      +gradient( lighten( $_wrong_color, 5% ), $_wrong_color  )
+      color: darken( $_wrong_color, 75% )
+      border-color: darken( $_wrong_color, 15% )
+
+    strong
+      font-weight: bold
+
+  // when an input is focused, the badge can
+  // move out of place on some devices
+  &.focused .answered
+    @media (max-height: 410px)
+      position: absolute !important
+
+  // displaying when a user gets an answer
+  .answered
+    $_user_answered_icon_size: 35px
+    position: fixed
+    bottom: 15px
+
+    left: 5%
+    right: 5%
+
+    // because this is fixed, we need to do something
+    // so it stays within the max width for the view
+    @media (min-width: 600px)
+      width: 540px
+      margin: 0 0 0 -270px
+      left: 50%
+      right: auto
+
+    // the visible item
+    padding : 10px 15px 10px 10px
+    border : 2px solid #fff
+    +gradient( #fff, #eee )
+
+    +prefix( box-sizing, border-box )
+    +prefix( box-shadow, 0 2px 8px rgba(0,0,0,.4) )
+    +prefix( border-radius, 7px )
+
+    img
+      height: $_user_answered_icon_size
+      width: $_user_answered_icon_size
+      float: left
+
+      +prefix( border-radius, 4px )
+
+    h3
+      float: left
+      font-size : 20px
+      line-height: $_user_answered_icon_size
+      padding-left : 15px
+
+    .badge
+      position: absolute
+      right: 0
+      top: -5px
+
+      width: 54px
+      height: 65px
+
+      background: url(badge.png) no-repeat
+
+
+  // TODO: show this?
+  .location
+    padding : 50px 5% 150px 5%
+
+    .category
+      font-size: 24px
+      font-family: 'default', sans-serif
+      color: #777
+      padding: 0 0 5px 0
+
+    .section
+      font-size: 36px
+      font-family: 'heading', sans-serif
+      color: #000
+
+    .progress
+      font-size: 14px
+      font-family: 'default', sans-serif
+      color: #bbb
+      padding: 50px 0 0 0
+
+
+  .waiting
+    text-align: center
+    padding : 50px 5% 200px 5%
+    color: #aaa
+
+    background: url(loading.gif) no-repeat 50% 120px
+
+
+  // display the answer option
+  .question
+    margin : 0 5%
+    padding-top : 50px
+
+    .title
+      font-size: 32px
+      font-family: 'heading', sans-serif
+
+    .hint
+      padding: 10px 0 0 0
+      color: #999
+      font-size: 14px
+
+    .selection
+      padding: 25px 0 0 0
+
+
+    .choices, .freeform
+      border : 1px solid #999
+
+      font-size : 16px
+
+      +prefix( border-radius, 15px )
+      +prefix( box-shadow, inset 0 1px 7px rgba( 0,0,0, .2 ))
+
+
+    // multiple choice
+    .choices
+      dl
+        padding: 15px 0
+        border-top: 1px solid #ccc
+
+        &:first-child
+          border: none
+
+        dt, dd
+          float: left
+        dt
+          width : 12%
+          text-align : center
+          color : #bbb
+        dd
+          width: 87%
+
+
+    // text area input
+    .freeform
+      border-color: #000
+      background: #fff
+
+      .wrapper
+        background: #333
+
+        // helps make the background appear contained
+        +prefix( border-radius, 14px 14px 0 0 )
+
+      textarea
+        background: none
+        border: none
+
+        width: 95%
+        height: 120px
+        margin: 15px 0 0 2%
+
+        color: #fff
+        font-family: 'code', monospace
+        font-size : 17px
+
+        +prefix( text-shadow, 0 1px 2px rgba( 0,0,0, .7 ))
+        +prefix( appearance, none )
+
+        &:focus
+          outline: none
+
+      .submit
+        padding: 15px
+        background: transparent
+        border-top: 1px solid #ccc
+
+        text-align: center
+        cursor: pointer
+
+

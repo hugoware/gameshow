@@ -6,14 +6,12 @@ angular.module 'gameshow'
     $scope.game = Game
     $scope.app = App
 
-    $scope.slide = 'Tools'
-    $scope.category = 'Tools'
-    $scope.section = 'Using Grunt'
+    # $scope.category = 'Tools'
+    # $scope.section = 'Using Grunt'
+    # $scope.question =
+    #   title: 'This is the title?'
+    #   choices: [ 'First Option', 'Sectond Option', 'Third Option' ]
 
-    $timeout( (->
-      console.log('here?')
-      $scope.answered = name: 'Marcus'
-      ), 1000 )
 
     # navigate to the next slide
     $scope.next = ->

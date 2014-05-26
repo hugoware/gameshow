@@ -1,6 +1,94 @@
 
+
 html, body, button, input
   font-family: 'default', sans-serif
 
 h1, h2, h3, h4, h5, h6
   font-family: 'heading', sans-serif
+
+
+// main container
+.view
+  position: relative
+
+  // just keep manageable for now
+  max-width: 600px
+  margin: 0 auto
+
+
+// general error message
+.error
+  $_error_color: #ffeb96
+  text-align: center
+  padding: 20px 15px
+  color: darken( $_error_color, 75% )
+
+  border: 1px solid darken( $_error_color, 15% )
+  +gradient( lighten( $_error_color, 5% ), $_error_color  )
+
+  +prefix( border-radius, 7px )
+  +prefix( text-shadow, 0 1px 2px #fff )
+  +prefix( box-shadow, inset 0 0 0 1px rgba( 255,255,255, .3 ))
+
+
+// general input form
+ul.form
+  border : 1px solid #999
+  +prefix( border-radius, 15px )
+  +prefix( box-shadow, inset 0 1px 7px rgba( 0,0,0, .2 ))
+
+  // each item
+  li
+    line-height : 30px
+    padding: 15px 0
+    border-top : 1px solid #999
+
+    &:first-child
+      border: none
+
+
+  li.submit
+    padding: 15px
+    background: transparent
+
+    +prefix( border-radius, 0 0 14px 14px )
+    +prefix( text-shadow, 0 1px 1px #fff )
+    +gradient( rgba(0,0,0,0), rgba( 0,0,0,.2 ) )
+
+    text-align: center
+    cursor: pointer
+
+    &:first-child
+      +prefix( border-radius, 14px 14px 0 0 )
+
+  dt, dd, input, select
+    font-size: 16px
+
+
+  // field names
+  dt
+    float: left
+    clear: both
+    width: 33%
+    text-align: right
+    color: #999
+
+  // interactive items
+  dd
+    float: right
+    width: 65%
+    margin-left: 5
+
+    // fields and input
+    input, select
+      width: 96%
+      margin: 0
+      padding: 0
+
+      border: none
+      background: none
+
+      +prefix( appearance, none )
+
+      &:focus
+        outline: none

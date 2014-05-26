@@ -1,7 +1,6 @@
 
 //- projector view
-
-#display.view
+#display
 
   //- navigation ( available from remote as well )
   .controller
@@ -21,7 +20,8 @@
         img( ng-src='http://www.gravatar.com/avatar/{{ answered.avatar }}.jpg?size=100' )
       dd
         h3 {{ answered.name }}
-        p First correct answer
+        h5 {{ section.value }}
+        p first correct answer
 
     //- shows general slide content
     .slide( ng-show='slide' )
@@ -30,13 +30,15 @@
     //- displays the question being asked
     .question( ng-show='question' )
       .content
-        h3 {{ question.title }}
+        h1 {{ question.title }}
 
         .hint( ng-show='question.hint' markdown='question.hint' )
 
         //- multiple choice
         ul( ng-show='question.choices' )
-          li( ng-repeat='choice in question.choices' ) {{ choice }}
+          dl( ng-repeat='choice in question.choices' )
+            dt {{ $index | option_letter }}
+            dd {{ choice }}
 
 
   //- game board ( titles and tiers )

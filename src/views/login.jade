@@ -1,49 +1,60 @@
 
 //- handles getting a user connected
 
-ul.view( ng-switch='view.at' )
-  li {{ view }}
+ul#login.view( ng-switch='view.at' )
+  li( ng-show='error' )
+    .error {{ error | error_message }}
 
   //- creating a new game
   li( ng-switch-when='create' )
 
-    dl
-      dt Password
-      dl
-        input( type='password' ng-model='$parent.password' )
+    ul.form
+      li
+        dl
+          dt Password
+          dd
+            input( type='password' ng-model='$parent.password' )
 
-      dt Game
-      dl
-        select( type='password' ng-model='$parent.type' )
-          option( value='css' ) CSS Jeopardy
+      li
+        dl
+          dt Game
+          dd
+            select( type='password' ng-model='$parent.type' )
+              option( value='css' ) CSS Jeopardy
 
-    button( ng-click='create()' ) Create
+
+      li.submit( ng-click='create()' ) Create
 
 
   //- already part of a game
   li( ng-switch-when='rejoin' )
-    h2 You're already logged in to {{ rejoin.title }}
-
-    button( ng-click='resume()' ) Rejoin
-    button( ng-click='leave()' ) Leave
+    .error You're already logged in to {{ rejoin.title }}
+    ul.form
+      li.submit( ng-click='resume()' ) Rejoin
+      li.submit( ng-click='leave()' ) Leave
 
 
   //- default login form
   li( ng-switch-default )
 
-    dl
-      dt Name
-      dl
-        input( type='text' ng-model='$parent.name' placeholder='Fred Smith' )
+    ul.form
+      li
+        dl
+          dt Name
+          dd
+            input( type='text' ng-model='$parent.name' placeholder='Fred Smith' )
+      li
+        dl
+          dt Email
+          dd
+            input( type='text' ng-model='$parent.email' placeholder='Optional' )
 
-      dt Email ( for Avatar )
-      dl
-        input( type='text' ng-model='$parent.email' placeholder='Optional' )
+      li
+        dl
+          dt Session
+          dd
+            input( type='text' ng-model='$parent.session' placeholder='999-999-999' )
 
-      dt Session ID
-      dl
-        input( type='text' ng-model='$parent.session' placeholder='999-999-999' )
-
-    button( ng-click='join()' ) Join
+      li.submit( ng-click='join()' ) Join Session
 
     a( ng-click='view("create")' ) Create game

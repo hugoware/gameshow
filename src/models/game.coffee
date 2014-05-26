@@ -200,14 +200,15 @@ $.answer = ( socket, data ) ->
     return socket.emit 'game:answer:result', success: false, error: 'missing_game'
 
   # make sure it's on the right question
-  unless game.question?.id is data.id
+  unless game.question? and game.question?.id is data.id
     return socket.emit 'game:answer:result', success: false, error: 'invalid_question'
 
   # if already attempted
-  if game.question.attempts[ socket.session.id ]
+  if game.question?.attempts?[ socket.session.id ]
     return socket.emit 'game:answer:result', success: false, error: 'already_tried'
 
   # save this attempt
+  game.question.attempts = game.question.attempts or { }
   game.question.attempts[ socket.session.id ] = true
 
   # make sure this can be tested

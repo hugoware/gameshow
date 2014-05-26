@@ -64,7 +64,7 @@ angular.module 'gameshow'
 
     # check if rejoining is an option
     if App.rejoin
-      $location.path if App.rejoin.leader then '/display' else '/view'
+      # $location.path if App.rejoin.leader then '/display' else '/view'
       $scope.rejoin = App.rejoin
       $scope.view 'rejoin'
 

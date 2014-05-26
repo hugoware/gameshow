@@ -7,13 +7,29 @@ angular.module 'gameshow'
 
     # replace content
     controller: ( $scope, $element ) ->
+
+      # set blocks of code format
+      _highlight_code = ( html ) ->
+
+        # replace code blocks
+        html = html.replace `/\[\/code]/g`, '</pre>'
+        html = html.replace `/\[code(:[^\]]*)?\]/g`, ( match ) ->
+          language = match.replace `/\[code:?/gi`, ''
+            .replace `/\].*$/gi`, ''
+          '<pre class="code '+ "#{language}" +'" >'
+
+
+      # watch for changes
       $scope.$watch 'markdown', ( value ) ->
+        html = value or ''
 
         # create markup
-        html = markdown.toHTML value or ''
+        html = _highlight_code html
 
-        # custom replacements
-
+        # convert to markdown
+        converter = new Markdown.Converter
+        html = converter.makeHtml html
 
         # update the content
-        $element.html html
+        $element.empty()
+        $element.append html

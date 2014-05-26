@@ -3,7 +3,10 @@ html#ng-app( ng-app='gameshow' )
   head
 
     //- styles
-    link( id="ui" rel='stylesheet' type='text/css' href='/ui/style.css' )
+    link#ui( rel='stylesheet' type='text/css' href='/ui/style.css' )
+
+    //- mobile style sheets
+    meta( name='viewport' content='initial-scale=1, maximum-scale=1' )
 
     //- server data
     script( type='text/javascript' ).
