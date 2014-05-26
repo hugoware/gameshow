@@ -39,7 +39,16 @@ angular.module 'gameshow'
     # return to the game
     # ( the view controller should verify )
     $scope.resume = ->
-      $location.path if $scope.rejoin.leader then '/display' else '/view'
+      Socket.emit 'game:rejoin'
+      Socket.once 'game:rejoin:result', ( result ) ->
+
+        # handle the new view
+        if result.success
+          $location.path if $scope.rejoin.leader then '/display' else '/view'
+
+        # show errors if needed
+        else if result.error
+          $scope.error = result.error
 
 
     # quits a game and shows the login
@@ -55,7 +64,6 @@ angular.module 'gameshow'
     Socket.on 'user:set', ( result ) -> App.user = result
 
 
-
     # restore user info
     if App.user
       $scope.name = App.user.name
@@ -64,7 +72,6 @@ angular.module 'gameshow'
 
     # check if rejoining is an option
     if App.rejoin
-      # $location.path if App.rejoin.leader then '/display' else '/view'
       $scope.rejoin = App.rejoin
       $scope.view 'rejoin'
 

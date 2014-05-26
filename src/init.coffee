@@ -30,6 +30,10 @@ $io.instance.sockets.on 'connection', ( socket ) ->
     $user.set socket, data
     $game.join socket, data
 
+  # try and rejoin
+  socket.on 'game:rejoin', () ->
+    $game.join socket, id: socket.session?.game_id, rejoin: true
+
 
   # creates a new game
   socket.on 'game:create', ( data ) ->
@@ -53,8 +57,12 @@ $io.instance.sockets.on 'connection', ( socket ) ->
 
   # tries to answer the current question
   socket.on 'game:answer', ( data ) ->
-    console.log 'answer'
     $game.answer socket, data
+
+
+  # quits a game
+  socket.on 'game:leave', () ->
+    $game.leave socket
 
 
 

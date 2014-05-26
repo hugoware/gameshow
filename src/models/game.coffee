@@ -4,6 +4,7 @@ $path = require 'path'
 $yaml = require 'yamljs'
 $config = require '../config'
 $util = require 'util'
+$user = require './user'
 
 # expressions used
 SPLIT_SLIDES= /\#\/{3,}/g
@@ -66,6 +67,11 @@ $.create = ( socket, params ) ->
   # this was okay
   socket.emit 'game:create:result', success: true
 
+
+# pulls a player from a game
+$.leave = ( socket ) ->
+  $user.disconnect socket
+  delete socket.session.game_id if socket.session?
 
 
 # gets client status info
@@ -138,13 +144,13 @@ $.set_section = ( socket, params ) ->
 
 
 
-
 # add a user to a game
 $.join = ( socket, params ) ->
+  type = if params.rejoin then 'rejoin' else 'join'
 
   # if this wasn't found, show the error
   unless socket.session?.user
-    return socket.emit 'game:join:result', error: 'user_not_found'
+    return socket.emit "game:#{ type }:result", error: 'user_not_found'
 
   # find the game
   params.id = _to_id_alias params.id
@@ -152,7 +158,7 @@ $.join = ( socket, params ) ->
 
   # if this wasn't found, show the error
   unless game
-    return socket.emit 'game:join:result', error: 'session_not_found'
+    return socket.emit "game:#{ type }:result", error: 'session_not_found'
 
   # since it's valid, enter the game
   socket.session.game_id = params.id
@@ -161,7 +167,7 @@ $.join = ( socket, params ) ->
   socket.join params.id
 
   # notify this was successful
-  socket.emit 'game:join:result', success: true
+  socket.emit "game:#{ type }:result", success: true
 
 
 

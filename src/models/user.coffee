@@ -49,8 +49,9 @@ $.connect = ( socket, id ) ->
 
 # unlinks a socket from a session
 $.disconnect = ( socket ) ->
-  if socket
-    delete socket.session
+  unless socket.disconnected
+    socket.disconnected = true
+    socket.disconnect()
 
 
 
