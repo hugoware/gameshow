@@ -10,7 +10,7 @@ Selecting elements by `id`, `class`, and `element`, is just one way to use selec
 Use commas to use multiple selectors for the same rule set. This apply the declarations for both selectors.
 
 [code:css]
-button, .button, #submit { ... }
+button, .button, #submit {  }
 [/code]
 
 This will select all `button` elements, anything with the class `button` and anything with the ID `submit`.
@@ -27,10 +27,10 @@ This is helpful when trying to avoid selecting too much.
 
 [code:css]
 /* all LI elements anywhere within a UL */
-ul li { ... }
+ul li {  }
 
 /* only LI elements that are children of UL */
-ul &gt; li { ... }
+ul &gt; li {  }
 [/code]
 
 
@@ -43,8 +43,8 @@ Attribute selectors allow you to check for the value of `attributes` on elements
 
 [code:css]
 /* apply a rule to links that open a new window */
-a[target='_blank'] { ... }
+a[target="_blank"] {  }
 
 /* apply a rule to elements that have a title set */
-[title] { ... }
+[title] {  }
 [/code]

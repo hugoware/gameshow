@@ -86,9 +86,27 @@ specificity:
   title: Specificity
   questions:
     -
-      title: What is the color red?
-      answer: c
+      title: Which of the following is most specific?
+      answer: a
       choices:
-        - RED
-        - GREEN
-        - BLUE
+        - "#target"
+        - ".item"
+        - "div"
+
+    -
+      title: Using '!important' has more priority than...
+      answer: d
+      choices:
+        - IDs selectors
+        - Class selectors
+        - Inline styles
+        - All of the above
+
+    -
+      title: Which selector is most specific?
+      answer: c
+      bonus: true
+      choices:
+        - "div > h3.title"
+        - "div.container > h3"
+        - "div.container h3.title"

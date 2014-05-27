@@ -6,12 +6,11 @@ angular.module 'gameshow'
     $scope.game = Game
     $scope.app = App
 
-    # $scope.category = 'Tools'
-    # $scope.section = 'Using Grunt'
-    # $scope.question =
-    #   title: 'This is the title?'
-    #   choices: [ 'First Option', 'Sectond Option', 'Third Option' ]
-
+    # handle navigation
+    $ document.body
+      .keypress ( event ) ->
+        return unless $scope.section
+        $scope.$apply $scope.next
 
     # navigate to the next slide
     $scope.next = ->

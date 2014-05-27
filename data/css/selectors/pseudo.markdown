@@ -1,6 +1,8 @@
 # Pseudo Selectors
 
-Pseudo Selectors are special selectors that can
+Pseudo Selectors are special keywords that are used to select elements when they are in a certian state.
+
+This can be in response to a user interaction, position on the page, input status, and more.
 
 
 #///

@@ -32,9 +32,11 @@ angular.module 'gameshow'
 
         # format code blocks
         html.find 'pre.code'
-          .each ->
-            block = $ this
-            block.text block.html().replace /\&gt;/g, '>'
+          .each () ->
+            element = $ this
+            element.text element.html().replace /\&gt;/i, '>'
+            hljs.highlightBlock element[0]
+
 
         # update the content
         $element.empty()

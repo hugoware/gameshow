@@ -22,6 +22,8 @@ html#ng-app( ng-app='gameshow' )
     script( src='/app.js' type='text/javascript' )
 
 
+    div( markdown='test' )
+
     script( type='text/javascript' ).
       function reset() {
         $('link').remove();
@@ -31,3 +33,6 @@ html#ng-app( ng-app='gameshow' )
           href:'/ui/style.css?r=' + (new Date()).getTime()
           }).appendTo( document.body );
       }
+
+    //- this can load later
+    link( rel='stylesheet' type='text/css' href='/ui/highlight-theme.css' )

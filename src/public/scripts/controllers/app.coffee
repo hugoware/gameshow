@@ -7,7 +7,6 @@ angular.module 'gameshow'
     # share data
     $scope.app = App
 
-
     # handles a connected user
     _connected = ( result ) ->
       App.user = result.user

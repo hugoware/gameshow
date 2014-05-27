@@ -32,13 +32,6 @@ css_validator:
 css_lint:
   title: CSS Lint
   questions:
-    -
-      title: What does CSS Lint check for?
-      answer: c
-      choices:
-        - Syntax and errors
-        - Unsupported rules
-        - Unused rules
 
     -
       title: Linting is different than validation because it checks for ...
@@ -48,6 +41,12 @@ css_lint:
         - ... usage of features per specification
         - ... missing external resources
 
+    -
+      title: CSS with Lint warnings will be ignored by a browser
+      answer: b
+      choices:
+        - "True"
+        - "False"
 
 # css grids
 css_minify:

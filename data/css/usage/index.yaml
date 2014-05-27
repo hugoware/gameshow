@@ -62,12 +62,22 @@ priority:
 
 
 advanced:
-  title: Advanced Features
+  title: Property Shorthand
   questions:
     -
-      title: What is the color red?
-      answer: c
+      title: Shorthand properties allow you to...
+      answer: b
       choices:
-        - RED
-        - GREEN
-        - BLUE
+        - ... use abbreviations for sizes (px, em, pt)
+        - ... set multiple CSS properties at once
+        - ... use color names instead of hex (red, green)
+
+    -
+      title: It's possible to modify existing shorthand properties by...
+      answer: a
+      choices:
+        - ... writing more specific declarations
+        - ... using a new CSS selector
+        - ... writing CSS in a separate stylesheet
+
+

@@ -53,10 +53,11 @@ bootstrap:
   title: Twitter Bootstrap
   questions:
     -
-      title: What is the color red?
-      answer: c
+      title: Twitter Bootstrap has CSS for...
+      answer: d
       choices:
-        - RED
-        - GREEN
-        - BLUE
+        - User interface elements
+        - Layouts and grids
+        - Typography
+        - All of the above
 

@@ -1,6 +1,6 @@
 # Grid Frameworks
 
-Creating a layout with CSS can be difficult at times. It takes a great deal of practice to get a hang of using `float` and `position` declarations.
+Creating a layout with CSS can be difficult at times. It takes a great deal of practice to get a hang of using `float` and `position`.
 
 CSS grid frameworks make it easy to create cross browser layouts by simply providing a few class names to your markup.
 
