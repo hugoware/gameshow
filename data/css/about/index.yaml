@@ -1,0 +1,110 @@
+title: About CSS
+
+# the order sections are shown
+sections:
+  - what_is_css
+  - life_before_css
+  - rise_of_css
+  - modern_css
+
+
+what_is_css:
+  title: What is CSS
+  questions:
+    -
+      title: What does CSS stand for?
+      answer: b
+      choices:
+        - Cryptic Silly Syntax
+        - Cascading Style Sheets
+        - Copy Snippets 'n Save
+
+    -
+      title: What is CSS most commonly used with?
+      answer: c
+      choices:
+        - jQuery
+        - XAML
+        - HTML
+
+    -
+      title: Which of the following is something CSS can NOT do?
+      answer: b
+      choices:
+        - Load external resources like images and fonts
+        - Update database records
+        - Change layout based on device
+
+
+
+life_before_css:
+  title: Before CSS
+  questions:
+    -
+      title: What tag was used to change font types?
+      answer: a
+      choices:
+        - <FONT>
+        - <COLOR>
+        - <SIZE>
+
+    -
+      title: What tag was used to change text color?
+      answer: a
+      choices:
+        - <FONT>
+        - <COLOR>
+        - <SIZE>
+
+    -
+      title: What tag was used to change font size?
+      answer: a
+      choices:
+        - <FONT>
+        - <COLOR>
+        - <SIZE>
+
+
+
+rise_of_css:
+  title: Rise of CSS
+  questions:
+    -
+      title: The first CSS specification was finished...
+      hint: CSS 1 had partial support in Internet Explorer 3
+      answer: c
+      choices:
+        - 4 years go
+        - 8 years ago
+        - 18 years ago
+
+    -
+      title: Which browser first had more than 99% support of CSS1
+      answer: d
+      bonus: true
+      choices:
+        - Netscape Navigator
+        - Opera
+        - Internet Explorer 6.0
+        - Internet Explorer 5.0 for Mac
+
+
+modern_css:
+  title: Modern CSS
+  questions:
+    -
+      title: How can tools help with CSS?
+      answer: d
+      choices:
+        - Check CSS for errors
+        - Minify CSS to reduce size
+        - Compile CSS from other languages
+        - All of the above
+
+    -
+      title: Which is NOT a new CSS3 feature?
+      answer: b
+      choices:
+        - Media Queries
+        - Importing External Stylesheets
+        - CSS Animations

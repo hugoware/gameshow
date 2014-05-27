@@ -23,6 +23,15 @@ angular.module 'gameshow', [
       else
         scope.$apply action
 
+    # helper to clear text selection
+    angular.clear_selection = () ->
+      try
+        if document.selection and document.selection.empty
+          document.selection.empty()
+        else if window.getSelection
+          sel = window.getSelection()
+          sel.removeAllRanges()
+
 
   # setup the app
   .config ( $routeProvider ) ->

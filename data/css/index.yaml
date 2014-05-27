@@ -1,9 +1,9 @@
 title: CSS Jeopardy
 theme: /style.css
 categories:
-  - history
+  - about
+  - usage
   - selectors
-  - properties
-  - mobile
+  - responsive
   - frameworks
   - tools

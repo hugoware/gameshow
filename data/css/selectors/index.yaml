@@ -1,37 +1,89 @@
 title: Selectors
 
-# the order sections are shown
 sections:
-  - css_reset
-  - grid
-  - bootstrap
-  - foundation
-  - grunt
+  - basics
+  - advanced
+  - pseudo
+  - specificity
 
-# about CSS resets
-css_reset:
-  title: CSS Resets
+
+basics:
+  title: The Basics
   questions:
     -
-      title: What are CSS resets used for?
-      answer: a
-      choices:
-        - Reduce file size
-        - Remove browser specifc styles
-        - Customize the browser window
-
-    -
-      title: Which one is not a fruit?
+      title: A selector is...
       answer: b
       choices:
-        - Apple
-        - Google
-        - Grapes
+        - ... an instruction to define appearance
+        - ... a pattern used to match elements
+        - ... a type of element that can be styled
+
+    -
+      title: Which of the following is an invalid selector?
+      answer: b
+      choices:
+        - "#name"
+        - $label
+        - .item
+        - div
+
+    -
+      title: What will "div .label" select?
+      answer: c
+      choices:
+        - All 'div' elements with a label class
+        - All elements with an ID 'label' inside any 'div'
+        - All elements with a class 'label' inside any 'div'
+        - None of the above
 
 
-# css grids
-grid:
-  title: Grid Frameworks
+advanced:
+  title: More Selectors
+  questions:
+    -
+      title: What is used to separate multiple selectors in the same rule set?
+      answer: d
+      choices:
+        - "A tab"
+        - "A greater than sign (>)"
+        - "A period (.)"
+        - "A comma (,)"
+
+    -
+      title: Which will match: <img src="icon.png" >
+      answer: a
+      bonus: true
+      choices:
+        - 'img[src$="png"]'
+        - 'img[src^="png"]'
+        - 'img.src(icon.png)'
+        - 'src[icon.png]'
+
+
+pseudo:
+  title: Pseudo Classes
+  questions:
+    -
+      title: Which selector reacts to a cursor moving over an element?
+      answer: b
+      choices:
+        - :active
+        - :hover
+        - :mouse
+        - :above
+
+    -
+      title: What would 'li:nth-child(3n+2)' select?
+      answer: a
+      bonus: true
+      choices:
+        - Every 3rd 'li' starting from the 2nd
+        - Every 2nd 'li' starting from the 3rd
+        - The 3rd 'li' and then the 5th 'li'
+
+
+specificity:
+  title: Specificity
   questions:
     -
       title: What is the color red?
@@ -40,58 +92,3 @@ grid:
         - RED
         - GREEN
         - BLUE
-
-    -
-      title: Enter a selector for `li` in `ul` elements
-      answer: ul > li
-
-
-# css grids
-bootstrap:
-  title: Twitter Bootstrap
-  questions:
-    -
-      title: What is the color red?
-      answer: c
-      choices:
-        - RED
-        - GREEN
-        - BLUE
-
-    -
-      title: Enter a selector for `li` in `ul` elements
-      answer: ul > li
-
-
-# css grids
-foundation:
-  title: Using Foundation
-  questions:
-    -
-      title: What is the color red?
-      answer: c
-      choices:
-        - RED
-        - GREEN
-        - BLUE
-
-    -
-      title: Enter a selector for `li` in `ul` elements
-      answer: ul > li
-
-
-# css grids
-grunt:
-  title: Using Grunt
-  questions:
-    -
-      title: What is the color red?
-      answer: c
-      choices:
-        - RED
-        - GREEN
-        - BLUE
-
-    -
-      title: Enter a selector for `li` in `ul` elements
-      answer: ul > li

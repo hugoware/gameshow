@@ -28,7 +28,13 @@ angular.module 'gameshow'
 
         # convert to markdown
         converter = new Markdown.Converter
-        html = converter.makeHtml html
+        html = $ "<div> #{ converter.makeHtml html }</div>"
+
+        # format code blocks
+        html.find 'pre.code'
+          .each ->
+            block = $ this
+            block.text block.html()
 
         # update the content
         $element.empty()

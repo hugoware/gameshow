@@ -14,6 +14,9 @@
   //- the area being explored
   .section( ng-show='section' )
 
+    //- hint when questions are next
+    img.last-slide( ng-show='last_slide' src='/ui/last-slide.gif')
+
     //- show the person who got it right
     dl.answered( ng-show='answered' )
       dt
@@ -29,13 +32,14 @@
 
     //- displays the question being asked
     .question( ng-show='question' )
+      .bonus( ng-show='question.bonus' ) BONUS QUESTION!
       .content
         h1 {{ question.title }}
 
         .hint( ng-show='question.hint' markdown='question.hint' )
 
         //- multiple choice
-        ul( ng-show='question.choices' )
+        ul( ng-show='question.choices' class='choices' )
           dl( ng-repeat='choice in question.choices' )
             dt {{ $index | option_letter }}
             dd {{ choice }}

@@ -1,19 +1,55 @@
-# Slide 1
+# Twitter Bootstrap
 
-Here is information about this slide
+Quickly style a site
 
-
-#///
-
-
-# Slide 2
-
-Here is more about this slide
 
 
 #///
 
+# Concept
 
-# Slide 3
+use class names to define appearance ( without mentioning names )
 
-Here is the last slide before the quiz
+[code:html]
+<button type="btn primary" >Submit</button>
+<button type="btn warning" >Submit</button>
+<button type="btn other" >Submit</button>
+[/code]
+
+
+
+#///
+
+# Result?
+
+example of previous buttons
+
+
+
+#///
+
+# Responsive By Design
+
+Bootstrap is responsive
+
+
+#///
+
+# Support for UI Widgets, Input
+
+Comes with styling support for UI elements
+
+
+#///
+
+# Theme Support
+
+Other themes for bootstrap are available
+
+
+
+#///
+
+# Alternatives
+
+Foundation, etc

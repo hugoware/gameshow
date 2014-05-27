@@ -1,0 +1,82 @@
+title: Using CSS
+
+sections:
+  - basics
+  - including
+  - priority
+  - advanced
+
+basics:
+  title: The Basics
+  questions:
+    -
+      title: Which of the following is true?
+      answer: c
+      choices:
+        - A property is used to find a selector
+        - An element is used to find a property
+        - A selector is used to find an element
+
+
+including:
+  title: Including CSS In Web Pages
+  questions:
+    -
+      title: Which method can NOT be used to import CSS directly onto a page?
+      answer: a
+      choices:
+        - SQL Query
+        - STYLE attribute
+        - STYLE element
+        - LINK element
+
+    -
+      title: Which method is the recommended way to use CSS?
+      answer: c
+      choices:
+        - STYLE attribute
+        - STYLE element
+        - LINK element
+
+    # -
+    #   title: Why is a LINK element preferred over other approaches?
+    #   answer: b
+    #   bonus: true
+    #   choices:
+    #     - Requires less processing power
+    #     - Styles are easier to share in multiple places
+    #     - LINK element
+
+
+priority:
+  title: Priorities
+  questions:
+    -
+      title: Which of the following has the lowest priority?
+      answer: b
+      choices:
+        - Inline Styles
+        - Browser Default
+        - !important
+        - User Defined Styles
+
+    -
+      title: What should you avoid using?
+      answer: a
+      choices:
+        - Inline Styles
+        - Media Type
+        - Parent Inheritance
+        - User Defined Styles
+
+
+advanced:
+  title: Advanced Features
+  questions:
+    -
+      title: What is the color red?
+      answer: c
+      choices:
+        - RED
+        - GREEN
+        - BLUE

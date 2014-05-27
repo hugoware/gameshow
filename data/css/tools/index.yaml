@@ -2,96 +2,102 @@ title: Tools
 
 # the order sections are shown
 sections:
-  - css_reset
-  - grid
-  - bootstrap
-  - foundation
-  - grunt
+  - css_validator
+  - css_lint
+  - css_minify
+  - preprocess
 
 # about CSS resets
-css_reset:
-  title: CSS Resets
+css_validator:
+  title: CSS Validator
   questions:
     -
-      title: What are CSS resets used for?
+      title: What is the purpose of a CSS Validator?
       answer: a
       choices:
-        - Reduce file size
-        - Remove browser specifc styles
-        - Customize the browser window
+        - Find errors and invalid CSS
+        - To reduce the size of CSS files
+        - To make you feel bad
 
     -
-      title: Which one is not a fruit?
+      title: What does it mean to have "valid" CSS?
+      answer: c
+      choices:
+        - The CSS only uses CSS3 features
+        - The CSS only uses CSS1 features
+        - The CSS only uses features for it's specification
+
+
+# css grids
+css_lint:
+  title: CSS Lint
+  questions:
+    -
+      title: What does CSS Lint check for?
+      answer: c
+      choices:
+        - Syntax and errors
+        - Unsupported rules
+        - Unused rules
+
+    -
+      title: Linting is different than validation because it checks for ...
+      answer: a
+      choices:
+        - ... best practices for CSS
+        - ... usage of features per specification
+        - ... missing external resources
+
+
+# css grids
+css_minify:
+  title: CSS Minification
+  questions:
+    -
+      title: Which of the following is NOT a benefit of minification?
+      answer: a
+      choices:
+        - Improved browser compatibility
+        - Reduced download times
+        - Quicker page rendering
+
+    -
+      title: Which of the optimizations is a valid minification?
       answer: b
       choices:
-        - Apple
-        - Google
-        - Grapes
+        - 'url(/img.jpg) == u(img.jpg)'
+        - '#00FF33 == #0F3'
+        - '#444000 == #40'
+        - 'bold == 100'
 
 
 # css grids
-grid:
-  title: Grid Frameworks
+preprocess:
+  title: Preprocessors
   questions:
     -
-      title: What is the color red?
+      title: Are SASS mixins (functions) available in the browser?
       answer: c
       choices:
-        - RED
-        - GREEN
-        - BLUE
+        - "Yes, they're available"
+        - "Yes, but only if using HTML5"
+        - "No, they're not available"
 
     -
-      title: Enter a selector for `li` in `ul` elements
-      answer: ul > li
-
-
-# css grids
-bootstrap:
-  title: Twitter Bootstrap
-  questions:
-    -
-      title: What is the color red?
-      answer: c
+      title: Which of the following is NOT true about SASS?
+      answer: a
       choices:
-        - RED
-        - GREEN
-        - BLUE
+        - SASS replaces CSS in the browser
+        - SASS can define and use variables
+        - SASS has built in functions
+        - SASS does not have a .NET equivalent
 
     -
-      title: Enter a selector for `li` in `ul` elements
-      answer: ul > li
-
-
-# css grids
-foundation:
-  title: Using Foundation
-  questions:
-    -
-      title: What is the color red?
+      title: What does SASS stand for?
       answer: c
+      bonus: true
       choices:
-        - RED
-        - GREEN
-        - BLUE
+        - Syntax Aware StyleSheets
+        - Selector Accessible StyleSheets
+        - Syntactically Awesome StyleSheets
 
-    -
-      title: Enter a selector for `li` in `ul` elements
-      answer: ul > li
-
-
-# css grids
-grunt:
-  title: Using Grunt
-  questions:
-    -
-      title: What is the color red?
-      answer: c
-      choices:
-        - RED
-        - GREEN
-        - BLUE
-
-    -
-      title: Enter a selector for `li` in `ul` elements
-      answer: ul > li

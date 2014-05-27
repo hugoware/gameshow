@@ -17,17 +17,20 @@ angular.module 'gameshow'
     $scope.next = ->
       $scope.index = $scope.index + 1
       _update_section()
+      angular.clear_selection()
 
 
     # navigate to the previous slide
     $scope.previous = ->
       $scope.index = Math.max 0, $scope.index - 1
       _update_section()
+      angular.clear_selection()
 
     # leaves a section
     $scope.close = ->
       Socket.emit 'navigate:clear', cancel: true
       delete $scope.section
+      angular.clear_selection()
 
 
     # picks a section
@@ -64,6 +67,9 @@ angular.module 'gameshow'
       finished = index.question >= $scope.section.questions.length
       in_slides = index.slide < $scope.section.slides.length
       in_questions = index.question < $scope.section.questions.length
+
+      # notice when about to do questions
+      $scope.last_slide = index.slide == $scope.section.slides.length - 1
 
       # clear existing
       delete $scope.answered

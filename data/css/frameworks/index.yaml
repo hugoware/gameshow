@@ -1,52 +1,54 @@
 title: Frameworks
 
-# the order sections are shown
 sections:
   - css_reset
+  - fontstacks
   - grid
   - bootstrap
-  - foundation
-  - grunt
 
-# about CSS resets
 css_reset:
   title: CSS Resets
   questions:
     -
       title: What are CSS resets used for?
-      answer: a
+      answer: b
       choices:
-        - Reduce file size
+        - Reduce CSS file size
         - Remove browser specifc styles
         - Customize the browser window
 
-    -
-      title: Which one is not a fruit?
-      answer: b
-      choices:
-        - Apple
-        - Google
-        - Grapes
 
-
-# css grids
-grid:
-  title: Grid Frameworks
+fontstacks:
+  title: Font Stacks
   questions:
     -
-      title: What is the color red?
+      title: Why would you use a Font Stack?
       answer: c
       choices:
-        - RED
-        - GREEN
-        - BLUE
+        - To make sure less used fonts don't feel left out
+        - To allow users to select the font they want to use
+        - To have fallbacks if the desired font is missing
 
     -
-      title: Enter a selector for `li` in `ul` elements
-      answer: ul > li
+      title: Why might custom Web Fonts be a bad idea?
+      answer: b
+      choices:
+        - Font might not have all correct sizes
+        - It requires the user to download more resources
+        - CSS might not be able to style the font
 
 
-# css grids
+grid:
+  title: CSS Grid Frameworks
+  questions:
+    -
+      title: It's recommended to use Tables for layout since they're so reliable
+      answer: b
+      choices:
+        - True
+        - False
+
+
 bootstrap:
   title: Twitter Bootstrap
   questions:
@@ -58,40 +60,3 @@ bootstrap:
         - GREEN
         - BLUE
 
-    -
-      title: Enter a selector for `li` in `ul` elements
-      answer: ul > li
-
-
-# css grids
-foundation:
-  title: Using Foundation
-  questions:
-    -
-      title: What is the color red?
-      answer: c
-      choices:
-        - RED
-        - GREEN
-        - BLUE
-
-    -
-      title: Enter a selector for `li` in `ul` elements
-      answer: ul > li
-
-
-# css grids
-grunt:
-  title: Using Grunt
-  questions:
-    -
-      title: What is the color red?
-      answer: c
-      choices:
-        - RED
-        - GREEN
-        - BLUE
-
-    -
-      title: Enter a selector for `li` in `ul` elements
-      answer: ul > li

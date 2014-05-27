@@ -1,0 +1,76 @@
+title: Responsive Design
+
+# the order sections are shown
+sections:
+  - basics
+  - media_types
+  - media_queries
+  - viewport
+
+basics:
+  title: The Basics
+  questions:
+    -
+      title: What are CSS resets used for?
+      answer: a
+      choices:
+        - Reduce file size
+        - Remove browser specifc styles
+        - Customize the browser window
+
+    -
+      title: Which one is not a fruit?
+      answer: b
+      choices:
+        - Apple
+        - Google
+        - Grapes
+
+
+media_types:
+  title: Media Types
+  questions:
+    -
+      title: What is the color red?
+      answer: c
+      choices:
+        - RED
+        - GREEN
+        - BLUE
+
+    -
+      title: Enter a selector for `li` in `ul` elements
+      answer: ul > li
+
+
+media_queries:
+  title: Media Queries
+  questions:
+    -
+      title: What is the color red?
+      answer: c
+      choices:
+        - RED
+        - GREEN
+        - BLUE
+
+    -
+      title: Enter a selector for `li` in `ul` elements
+      answer: ul > li
+
+
+viewport:
+  title: Using Viewport
+  questions:
+    -
+      title: What is the color red?
+      answer: c
+      choices:
+        - RED
+        - GREEN
+        - BLUE
+
+    -
+      title: Enter a selector for `li` in `ul` elements
+      answer: ul > li
+

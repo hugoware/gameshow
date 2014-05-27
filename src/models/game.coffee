@@ -301,6 +301,9 @@ _section = ( key, section, category, game ) =>
   slides = contents.toString().split SPLIT_SLIDES
   slides[ i ] = slide.replace REMOVE_WHITESPACE, '' for slide, i in slides
 
+  # just help
+  slides = [ 'empty' ] if slides.length is 0
+
   # read the markdown
   section.slides = slides
 
@@ -349,6 +352,7 @@ _get_question = ( game ) ->
     id: game.question.id
     title: game.question.title
     choices: game.question.choices
+    bonus: game.question.bonus
 
 
 # gets the current game location
