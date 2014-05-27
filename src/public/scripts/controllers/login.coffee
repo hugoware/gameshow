@@ -76,12 +76,8 @@ angular.module 'gameshow'
       $scope.view 'rejoin'
 
 
-
     # helper stuff
     $scope.session = '888-666-777'
     $scope.type = 'css'
-
-    $scope.name = $scope.name or (0|( Math.random() * 100000 )).toString( 32 )
-    $scope.password = 'raiden'
 
 

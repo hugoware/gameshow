@@ -9,12 +9,24 @@ _Without a viewport, the iPhone scales the previous example to fit on its screen
 
 #///
 
+# Why `viewport`?
+
+When smartphones were introduced, a lot of websites were designed for large screens (desktops, laptops, etc). Mobile browsers had to zoom in an out ot view content.
+
+The `viewport` was created to allow a browser to define the viewing area for a page.
+
+
+#///
+
 # Including a Viewport
 
+The most basic way to use `viewport` is the following...
+
 [code:html]
-<meta name="viewport" content="initial-scale=1" >
+<meta name="viewport" content="width=device-width, initial-scale=1">
 [/code]
 
+Essentially, this tag is telling the browser that it can expect the site to look correct at it's current width. The `initial-scale` is used to make certain that `1px` is `1px` _(probably for high density displays, etc)_
 
 
 #///

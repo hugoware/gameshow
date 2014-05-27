@@ -1,6 +1,6 @@
 # CSS Validator
 
-Validators are a good way to make sure you're using CSS allowed by the specification.
+Validators are a good way to make sure you're using CSS allowed by the specification. A validator will tell you if you're using proprietary features or warn you of vendor specific properties.
 
 
 #///
@@ -25,8 +25,17 @@ _Yikes!_
 
 #///
 
-# "Validation"
+# Why Bother?
 
-CSS still works even if it's not valid... it's the flexible nature of the web.
+Like most things on the web, CSS still works even if it's not valid. Even the W3C addresses why validation is important even though it doesn't appear to offer any benefits.
 
-_I should probably go back and look at my site now..._
+**So, why bother validate?**
+
+
+
+#/// Benefits
+
+There are a few reasons why you might consider validating your CSS.
+
+* More reliable across different browsers
+* Verify "Standards Compliance" to help future proof your site

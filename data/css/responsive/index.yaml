@@ -61,20 +61,23 @@ media_queries:
         - if( ... )
 
 
-
-
 viewport:
   title: Using Viewport
   questions:
     -
-      title: What is the color red?
-      answer: c
+      title: A viewport is included using...
+      answer: b
       choices:
-        - RED
-        - GREEN
-        - BLUE
+        - a <VIEWPORT> tag
+        - a <META> tag
+        - a the 'media' attribute on a <LINK> tag
+        - a <STYLE> tag
 
     -
-      title: Enter a selector for `li` in `ul` elements
-      answer: ul > li
+      title: What does 'user-scalable=no' probably do?
+      answer: a
+      choices:
+        - Prevents zooming in an out
+        - Prevents opening new browser tabs
+        - Prevents "font-size" declarations from working
 
