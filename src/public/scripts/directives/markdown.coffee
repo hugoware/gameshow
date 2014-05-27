@@ -34,7 +34,7 @@ angular.module 'gameshow'
         html.find 'pre.code'
           .each ->
             block = $ this
-            block.text block.html()
+            block.text block.html().replace /\&gt;/g, '>'
 
         # update the content
         $element.empty()

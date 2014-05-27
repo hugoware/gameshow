@@ -45,8 +45,8 @@ grid:
       title: It's recommended to use Tables for layout since they're so reliable
       answer: b
       choices:
-        - True
-        - False
+        - "Yes"
+        - "No"
 
 
 bootstrap:

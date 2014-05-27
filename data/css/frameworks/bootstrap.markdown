@@ -1,50 +1,45 @@
 # Twitter Bootstrap
 
-Quickly style a site
+**Twitter Bootstrap** is a front end framework that simplifies creating and theming a website by providing CSS for components, layouts, and more.
 
 
 
 #///
 
-# Concept
+# Using Bootstrap
 
-use class names to define appearance ( without mentioning names )
+Twitter Bootstrap defines many selectors for a variety of `class` names. By using combinations of `class` names you can theme your entire app without digging into any CSS.
 
 [code:html]
-<button type="btn primary" >Submit</button>
-<button type="btn warning" >Submit</button>
-<button type="btn other" >Submit</button>
+<button type="btn" >default</button>
+<button type="btn btn-success" >.btn-success</button>
+<button type="btn btn-info" >.btn-info</button>
+<button type="btn btn-warning" >.btn-warning</button>
 [/code]
 
-
-
-#///
-
-# Result?
-
-example of previous buttons
+![](/resources/css/buttons.png)
 
 
 
 #///
 
-# Responsive By Design
+# User Input, Widgets, and More
 
-Bootstrap is responsive
+Twitter Bootstrap also simplifies working with UI elements like text fields, buttons, data grids and more.
 
+![](/resources/css/bootstrap-ui.png)
 
-#///
+Additionally, Twitter Bootstrap comes with a built in grid framework with an optional responsive feature available.
 
-# Support for UI Widgets, Input
-
-Comes with styling support for UI elements
 
 
 #///
 
 # Theme Support
 
-Other themes for bootstrap are available
+It's also possible to replace the default theme with something completely new. Many sites have free and paid themes that work with Twitter Bootstrap.
+
+![](/resources/css/bootstrap-theme.png)
 
 
 
@@ -52,4 +47,10 @@ Other themes for bootstrap are available
 
 # Alternatives
 
-Foundation, etc
+Twitter Boostrap is one of many front end frameworks available. There are many other popular frameworks.
+
+* Foundation
+* HTML5 Boilerplate
+* Ink
+* Kickstrap
+* ... many more...

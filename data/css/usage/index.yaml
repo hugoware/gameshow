@@ -38,15 +38,6 @@ including:
         - STYLE element
         - LINK element
 
-    # -
-    #   title: Why is a LINK element preferred over other approaches?
-    #   answer: b
-    #   bonus: true
-    #   choices:
-    #     - Requires less processing power
-    #     - Styles are easier to share in multiple places
-    #     - LINK element
-
 
 priority:
   title: Priorities
