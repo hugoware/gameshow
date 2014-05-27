@@ -17,7 +17,7 @@ angular.module 'gameshow'
     # adds a handler for socket events
     @.on = ( event, action ) ->
       handle = ( data ) =>
-        console.log 'on', event, data
+        # console.log 'on', event, data
         angular.safe_apply $rootScope, -> action data
 
       # perform event as needed
@@ -29,7 +29,7 @@ angular.module 'gameshow'
 
       # create a simple handler
       handle = ( data ) =>
-        console.log 'once', event, data
+        # console.log 'once', event, data
         angular.safe_apply $rootScope, -> action data
         @.socket.removeListener event, handle
 
@@ -39,7 +39,7 @@ angular.module 'gameshow'
 
     # sends a socket request
     @.emit = ( event, data ) ->
-      console.log 'emit', event, data
+      # console.log 'emit', event, data
       @.socket.emit event, data
 
 

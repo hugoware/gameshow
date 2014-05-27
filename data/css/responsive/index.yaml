@@ -8,55 +8,59 @@ sections:
   - viewport
 
 basics:
-  title: The Basics
+  title: Why Responsive?
   questions:
     -
-      title: What are CSS resets used for?
-      answer: a
-      choices:
-        - Reduce file size
-        - Remove browser specifc styles
-        - Customize the browser window
-
-    -
-      title: Which one is not a fruit?
+      title: What is the primary goal of Responsive Design?
       answer: b
       choices:
-        - Apple
-        - Google
-        - Grapes
+        - Reduced latency while loading pages
+        - Best viewing experience regardless of device
+        - Fast response to user input
 
 
 media_types:
   title: Media Types
   questions:
     -
-      title: What is the color red?
+      title: Choosing a media type for a stylesheet identifies...
+      answer: a
+      choices:
+        - ... the kind of device it is for
+        - ... the screen size it is for
+        - ... the types of images it uses
+    -
+      title: Which media type does NOT exist?
       answer: c
       choices:
-        - RED
-        - GREEN
-        - BLUE
-
-    -
-      title: Enter a selector for `li` in `ul` elements
-      answer: ul > li
+        - braile
+        - tv
+        - iphone
+        - embossed
 
 
 media_queries:
   title: Media Queries
   questions:
     -
-      title: What is the color red?
-      answer: c
+      title: The media query '(min-width: 700px)' will target...
+      answer: a
       choices:
-        - RED
-        - GREEN
-        - BLUE
+        - ... viewports 700px or wider
+        - ... viewports 700px or smaller
+        - ... viewports 699px or small
 
     -
-      title: Enter a selector for `li` in `ul` elements
-      answer: ul > li
+      title: Internet Explorer 6 could simulate media queries in CSS behavior using...
+      answer: c
+      bonus: true
+      choices:
+        - eval( ... )
+        - query( ... )
+        - expression( ... )
+        - if( ... )
+
+
 
 
 viewport:

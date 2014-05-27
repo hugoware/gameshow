@@ -2,22 +2,17 @@
 # interacts with the game instance
 
 angular.module 'gameshow'
-  .service 'Game', ( $http, Socket ) ->
+  .service 'Game', ( $http, Socket, Config ) ->
 
     # enums
     @.QUESTION = 1
     @.SECTION = 2
 
 
-    # # game state ( for views, etc )
-    # @.state = { }
-
-
     # does some cleanup to data to make it
     # easier to use on the client side
     _format = ( data ) ->
       return unless data
-      console.log data
 
       # link each category
       for key, index in data.categories
@@ -42,7 +37,7 @@ angular.module 'gameshow'
           # update section data
           section.key = key
           section.category = category.key
-          section.value = "$#{ index+1 }00"
+          section.value = Config.TIERS[ index ] #"$#{ index+1 }00"
 
           # replace with the new section
           category.sections[ index ] = section

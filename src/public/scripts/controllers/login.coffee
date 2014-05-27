@@ -78,9 +78,10 @@ angular.module 'gameshow'
 
 
     # helper stuff
-    $scope.name = $scope.name or (0|( Math.random() * 100000 )).toString( 32 )
     $scope.session = '888-666-777'
-    $scope.password = 'raiden'
     $scope.type = 'css'
+
+    $scope.name = $scope.name or (0|( Math.random() * 100000 )).toString( 32 )
+    $scope.password = 'raiden'
 
 

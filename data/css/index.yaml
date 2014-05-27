@@ -3,6 +3,7 @@ theme: /style.css
 categories:
   - about
   - usage
+  - responsive
   - selectors
   - frameworks
   - tools
