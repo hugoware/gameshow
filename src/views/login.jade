@@ -2,6 +2,12 @@
 //- handles getting a user connected
 
 ul#login.view( ng-switch='view.at' )
+
+  //- site id
+  li.logo
+    img( src='/ui/logo.png' alt='User Group Jeopardy' )
+
+  //- error messages
   li( ng-show='error' )
     .error {{ error | error_message }}
 
