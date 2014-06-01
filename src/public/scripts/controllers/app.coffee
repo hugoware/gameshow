@@ -22,4 +22,6 @@ angular.module 'gameshow'
 
     # watch for disconnects
     Socket.on 'app:disconnect', ( result ) ->
-      console.log result
+
+      # TODO: eventaully gracefull notify the user
+      alert 'You have been disconnected'

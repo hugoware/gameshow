@@ -2,11 +2,10 @@
 # interacts with the game instance
 
 angular.module 'gameshow'
-  .service 'Game', ( $http, Socket, Config ) ->
+  .service 'Game', ( $http, $timeout, Socket, Config ) ->
 
-    # enums
-    @.QUESTION = 1
-    @.SECTION = 2
+    # allowed game types
+    @.types = Config.TYPES
 
 
     # does some cleanup to data to make it
@@ -23,6 +22,7 @@ angular.module 'gameshow'
 
         # replace with the category
         data.categories[ index ] = category
+
 
       # link category sections
       for category in data.categories
@@ -47,9 +47,24 @@ angular.module 'gameshow'
       data
 
 
+    # check in occasionally ( trying to see if this prevents disconnects )
+    @.poll = =>
+      @.ping()
+      $timeout @.poll, Config.POLL_INTERVAL
+
+
+
+    # tries to ensure the user is connected
+    @.ping = ->
+      Socket.emit 'ping'
+      $http.post '/ping'
+
+      # TODO: show a message for failures?
+
+
     # tries to load game data
     @.load = ( callback ) ->
-      $http.get '/data'
+      $http.post '/data'
 
         # errors just fail
         .error => callback?()
@@ -63,7 +78,7 @@ angular.module 'gameshow'
 
     # gets the default status for a game view
     @.status = ( callback ) ->
-      $http.get '/status'
+      $http.post '/status'
 
         # errors just fail
         .error => callback?()

@@ -8,22 +8,23 @@ ul#login.view( ng-switch='view.at' )
   //- creating a new game
   li( ng-switch-when='create' )
 
-    ul.form
-      li
-        dl
-          dt Password
-          dd
-            input( type='password' ng-model='$parent.password' )
+    form( ng-submit='create()' )
+      ul.form
+        li
+          dl
+            dt Password
+            dd
+              input( type='password' ng-model='$parent.password' )
 
-      li
-        dl
-          dt Game
-          dd
-            select( type='password' ng-model='$parent.type' )
-              option( value='css' ) CSS Jeopardy
+        li
+          dl
+            dt Game
+            dd
+              select( type='password' ng-model='$parent.type'
+                      ng-options='type.key as type.title for type in game.types' )
 
 
-      li.submit( ng-click='create()' ) Create
+        li.submit( ng-click='create()' ) Create
 
 
   //- already part of a game
@@ -37,24 +38,32 @@ ul#login.view( ng-switch='view.at' )
   //- default login form
   li( ng-switch-default )
 
-    ul.form
-      li
-        dl
-          dt Name
-          dd
-            input( type='text' ng-model='$parent.name' placeholder='Fred Smith' )
-      li
-        dl
-          dt Email
-          dd
-            input( type='text' ng-model='$parent.email' placeholder='Optional' )
+    form( ng-submit='join()' )
 
-      li( ng-hide='true' )
-        dl
-          dt Session
-          dd
-            input( type='text' ng-model='$parent.session' placeholder='999-999-999' )
+      //- TODO: fix this later -- needed to make Angular submit
+      //- the form -- switch to an actual form submit button
+      //- instead of the LI items
+      button( type='submit' ng-click='join' ng-show='false' )
 
-      li.submit( ng-click='join()' ) Join Session
+      ul.form
+        li
+          dl
+            dt Name
+            dd
+              input( type='text' ng-model='$parent.name' placeholder='Fred Smith' )
+        li
+          dl
+            dt Email
+            dd
+              input( type='text' ng-model='$parent.email' placeholder='Optional' )
+
+        li
+          dl
+            dt Session
+            dd
+              input( type='text' ng-model='$parent.session' placeholder='999-999-999' )
+
+        li.submit( ng-click='join()' ) Join Session
+
 
     a.create( ng-click='view("create")' ) Create game

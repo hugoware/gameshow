@@ -2,14 +2,13 @@
 $util = require 'util'
 $config = require './config'
 $game = require './models/game'
+$game_repository = require './game_repository'
 $user = require './models/user'
 $io = require 'socket.io'
 
 
-
-
 # load each game available game
-$game.load type for type in $config.types
+$game_repository.init()
 
 
 # link up socket requests

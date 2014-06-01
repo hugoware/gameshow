@@ -2,22 +2,8 @@
 # handles the individual user view
 
 angular.module 'gameshow'
-  .controller 'ViewController', ( $scope, $location, $timeout, App, Game, Socket ) ->
+  .controller 'ViewController', ( $scope, $location, App, Game, Socket ) ->
     App.loading = true
-
-    # $timeout (->
-    #   $scope.location=
-    #     category: 'Tools'
-    #     section: 'Using Grunt'
-    #   $scope.question =
-    #     title: 'This is the title?'
-    #     # choices: [ 'First Option', 'Sectond Option', 'Third Option' ]
-    #     hint: 'this should help a bit with the answer'
-    #   $scope.answered =
-    #     name: 'Fred Smith'
-    #   $scope.result =
-    #     success: false
-    #   ), 1500
 
 
     # can the answered badge be shown?
@@ -28,6 +14,9 @@ angular.module 'gameshow'
     # display if the game status is valid
     _ready = () ->
       delete App.loading
+
+      # try and stay alive?
+      Game.poll()
 
       # handle answering
       $scope.answer = ( value ) ->
@@ -72,3 +61,5 @@ angular.module 'gameshow'
 
       # allow the view to show
       _ready()
+
+

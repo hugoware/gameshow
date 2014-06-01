@@ -55,9 +55,9 @@ $app.use $express.static( $setup.folder.public )
 # routes
 $app.all '/', require './routes/index'
 $app.all '/views?/:id', require './routes/view'
-$app.all '/data', require './routes/data'
-$app.all '/status', require './routes/status'
-$app.all '/dump', require './routes/dump'
+$app.post '/data', require './routes/data'
+$app.post '/status', require './routes/status'
+$app.post '/ping', require './routes/ping'
 
 
 # dev config
@@ -71,17 +71,3 @@ $io.instance = $io.listen $server
 
 # initialize
 require './init'
-
-#
-# $server.listen $config.port, ->
-#   console.log "server ready on #{ $config.port }"
-
-# $app.use $express.cookieParser 'your secret here'
-# $app.use $express.session secret: 'mysecretcode'
-
-# $app.use $express.favicon()
-# $app.use $express.logger('dev')
-# $app.use $express.bodyParser()
-
-# $app.use $express.methodOverride()
-# $app.use $app.router

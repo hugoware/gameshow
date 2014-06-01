@@ -11,6 +11,7 @@ html#ng-app( ng-app='gameshow' )
     //- server data
     script( type='text/javascript' ).
       window.CLIENT_ID = '#{ id }';
+      window.TYPES = !{ JSON.stringify( types )};
 
 
   //- main view
@@ -21,18 +22,6 @@ html#ng-app( ng-app='gameshow' )
     script( src='/socket.io/socket.io.js' type='text/javascript' )
     script( src='/app.js' type='text/javascript' )
 
-
-    div( markdown='test' )
-
-    script( type='text/javascript' ).
-      function reset() {
-        $('link').remove();
-        $('<link/>').attr({
-          type: 'text/css',
-          rel: 'stylesheet',
-          href:'/ui/style.css?r=' + (new Date()).getTime()
-          }).appendTo( document.body );
-      }
 
     //- this can load later
     link( rel='stylesheet' type='text/css' href='/ui/highlight-theme.css' )

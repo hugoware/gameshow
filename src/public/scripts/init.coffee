@@ -10,7 +10,9 @@ angular.module 'gameshow', [
   # general configuration
   .value 'Config',
     CLIENT_ID: window.CLIENT_ID
-    TIERS: [ '$100', '$200', '$300', '$400', '$500', '$600', '$700' ]
+    TYPES: window.TYPES
+    POLL_INTERVAL: 5000
+    TIERS: [ '$50', '$100', '$150', '$200', '$250', '$300', '$500' ]
 
 
   # extend angular

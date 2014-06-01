@@ -3,6 +3,7 @@
 
 angular.module 'gameshow'
   .controller 'LoginController', ( $scope, $location, App, Game, Socket ) ->
+    $scope.game = Game
 
     # set the view
     $scope.view = ( key ) -> $scope.view.at = key
@@ -76,8 +77,7 @@ angular.module 'gameshow'
       $scope.view 'rejoin'
 
 
-    # helper stuff
-    $scope.session = '888-666-777'
-    $scope.type = 'css'
+    # try a default selection
+    $scope.type = Game.types?[ 0 ]?.key
 
 

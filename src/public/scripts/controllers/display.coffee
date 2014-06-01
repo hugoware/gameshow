@@ -7,10 +7,22 @@ angular.module 'gameshow'
     $scope.app = App
 
     # handle navigation
+    # for now, any
     $ document.body
       .keypress ( event ) ->
         return unless $scope.section
-        $scope.$apply $scope.next
+
+        # if spacebar or > then go next
+        if event.keyCode in [ 32, 46 ]
+          $scope.$apply $scope.next
+
+        # if < then go back
+        else if event.keyCode in [ 44 ]
+          $scope.$apply $scope.previous
+
+        # if z then leave section
+        else if event.keyCode in [ 122 ]
+          $scope.$apply $scope.close
 
     # navigate to the next slide
     $scope.next = ->
@@ -109,6 +121,10 @@ angular.module 'gameshow'
     # load and make sure data is found
     # only the display section should
     # get game data
-    Game.load ( data ) -> $location.path '/' unless data
+    Game.load ( data ) ->
+      return $location.path '/' unless data
+
+      # start polling the server
+      Game.poll()
 
 

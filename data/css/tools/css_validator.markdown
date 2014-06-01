@@ -33,7 +33,9 @@ Like most things on the web, CSS still works even if it's not valid. Even the W3
 
 
 
-#/// Benefits
+#///
+
+# Benefits
 
 There are a few reasons why you might consider validating your CSS.
 

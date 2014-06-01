@@ -1,34 +1,25 @@
 $ = module.exports
-$fs = require 'fs'
-$path = require 'path'
-$yaml = require 'yamljs'
 $config = require '../config'
 $util = require 'util'
 $user = require './user'
-
-# expressions used
-SPLIT_SLIDES= /\#\/{3,}/g
-REMOVE_WHITESPACE= /^(\n|\s)+|(\n|\s)+$/g
+$game_repository = require '../game_repository'
 
 
 # game instances
 $games = { }
 
 
-# existing types
-$.types = { }
-
-
 # start an entirely new game
 $.start = ( type ) =>
-  $.load type unless type in $.types
+
+  # verify this is a real type
+  return null if not $game_repository.exists type
 
   # TODO: do a real clone
   game =
-    # id: _generate_id()
-    id: '888666777'
+    id: _generate_id()
     type: type
-    data: $util.clone $.types[ type ]
+    data: $game_repository.load type
 
   # share the ID
   game.data.id = game.id
@@ -171,27 +162,6 @@ $.join = ( socket, params ) ->
 
 
 
-# loads all data for a game
-$.load = ( key ) =>
-
-  # read the main file
-  path = $path.resolve "../data/#{ key }/index.yaml"
-  data = $yaml.load path
-
-  # save the ID for the source
-  data.key = key
-
-  # read in each category
-  for category in data.categories
-    _category( category, data )
-
-  # cache this game
-  $.types[ key ] = data
-
-  # share the data
-  data
-
-
 
 # handle answering a question
 $.answer = ( socket, data ) ->
@@ -275,75 +245,11 @@ _clear_section = ( game, params ) ->
     delete game.section
 
 
-# load in category data
-_category = ( key, game ) =>
-  path = $path.resolve "../data/#{ game.key }/#{ key }/index.yaml"
-  category = $yaml.load path
-
-  # shouldn't be null later
-  return unless category
-
-  # set the category
-  category.key = key
-  game[ key ] = category
-
-  # read the slides for each section
-  for section in category.sections
-    _section section, category[ section ], category, game
-
-
-# set the
-_section = ( key, section, category, game ) =>
-  path = $path.resolve "../data/#{ game.key }/#{ category.key }/#{ key }.markdown"
-  contents = $fs.readFileSync path
-
-  # extract each page and cleanup
-  slides = contents.toString().split SPLIT_SLIDES
-  slides[ i ] = slide.replace REMOVE_WHITESPACE, '' for slide, i in slides
-
-  # just help
-  slides = [ 'empty' ] if slides.length is 0
-
-  # read the markdown
-  section.slides = slides
-
-  # setup each question
-  for question in section.questions
-
-    # give each on an ID
-    question.id = ( $util.hash "#{question.title}::#{category.title}" ).toString( 32 ) + Math.random()
-    question.answer = _assign_matching_expression question
-    question.attempts = { }
-
-
-
-
 # create a random game id
 _generate_id = () -> _to_id_alias( Math.random() ).substr 0, 9
 
 # gets only digits for an ID
 _to_id_alias = ( id ) -> ( id || '' ).toString().replace /[^0-9]/g, ''
-
-
-# handles setting up a regex to check answers
-_assign_matching_expression = ( question ) ->
-
-  # create an expression to test values
-  if question.choices
-    index = ( question.answer.toLowerCase().charCodeAt 0 ) - 97
-    new RegExp "^#{ index }$"
-
-  # otherwise, it's a matching expressions
-  else
-
-    # set options ( only check if explictly turned off)
-    options = ''
-    options += 'i' unless question.ignore_case is false
-    options += 'g' unless question.global is false
-
-    # create the expression
-    new RegExp question.answer, options
-
 
 
 # gets minimal question data

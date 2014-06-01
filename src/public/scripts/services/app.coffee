@@ -4,8 +4,5 @@
 angular.module 'gameshow'
   .factory 'App', ( $http ) ->
 
-    @.state = -> console.log 'ready'
-
-
 
     @
