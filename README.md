@@ -13,7 +13,7 @@ A fun and interactive way to give user group presentations. This app uses Node, 
 
 ## Setup
 
-1. npm install
+1. npm install (in `./` and  `./src/` )
 2. grunt build
 3. cd build/
 4. node app.js
@@ -34,6 +34,17 @@ For the most part, configuration values are self explanatory.
 
 The `css` directory has an example presentation. *Additional information will be added later*.
 
+## Presentation Controls
+
+* The presenter screen should start the User Group Jeopardy game
+* Clicking on a block will open that section and show the slides for that area
+* Move the mouse to the bottom of the screen to see controls and the presentation ID
+* Use the `>` or `spacebar` to navigate forward
+* Use the `<` key to navigate backwards
+* Use the `z` key to close the section (and not finish it)
+* A small grey spinning icon appears in the top right corner when you're on a slide right before the questions.
+
+
 
 ## FAQ
 
@@ -48,3 +59,17 @@ Scores are **not** tracked on the server. In my presentation, I gave out Monopol
 #### Does this only work for code presentations?
 
 No, slides can cover any topic you like. Questions can be either multiple choice or free form, but they don't have to be limited to code related topics.
+
+
+## TODO
+
+Here are a few more remaining problems
+
+1. User login is confusing ( the way the errors are handled )
+2. Requires more error messages
+3. Need to finish CSS for more column and row counts
+4. Add a route that handles loading /resource/* into /data/presentation/*
+5. Implement /theme.css property in presentations (for custom UI per presentation)
+6. Build mobile friendly 'Remote Control'
+7. Add an indication when you're on the last question in a section
+8. Over all UI improvements (transitions, animations, sounds?, etc)
