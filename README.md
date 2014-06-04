@@ -4,6 +4,11 @@
 
 A fun and interactive way to give user group presentations. This app uses Node, Express, Jade, CoffeeScript, SASS, AngularJS, Socket.IO, YAML, and Markdown.
 
+## Demo
+
+[https://www.youtube.com/watch?v=5z14Vczdpfc](https://www.youtube.com/watch?v=5z14Vczdpfc)
+
+
 ## Requires
 
 1. NPM
